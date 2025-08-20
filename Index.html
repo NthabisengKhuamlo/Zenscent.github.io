@@ -7,14 +7,15 @@
     <meta name="keywords" content="Zenscents, home fragrance, diffusers, scents, shop">
     <meta name="author" content="Nthabiseng Khumalo">
     <title>Zenscents | Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Luxury Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
-            color: #333;
+            color: #222;
         }
         header {
             background-color: #222;
@@ -23,11 +24,12 @@
             text-align: center;
             position: relative;
             z-index: 10;
-            transition: padding 0.3s ease;
+            box-shadow: 0 2px 16px rgba(44,37,29,0.08);
         }
         header nav ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
             display: flex;
             justify-content: center;
         }
@@ -37,154 +39,403 @@
         header nav ul li a {
             color: white;
             text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.06em;
         }
         .cart-icon {
             position: absolute;
-            right: 20px;
-            top: 10px;
+            right: 28px;
+            top: 16px;
             cursor: pointer;
-            background-color: #222;
+            background: #222;
             padding: 12px;
             border-radius: 50%;
             color: white;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 8px rgba(44,37,29,0.08);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cart-icon svg {
+            width: 1.7em;
+            height: 1.7em;
+            vertical-align: middle;
+            stroke-width: 1.1;
         }
         .cart-icon:hover {
-            background-color: #444;
-            transform: scale(1.1);
+            background: #444;
+            transform: scale(1.08);
+        }
+        .cart-count {
+            background: #fff;
+            color: #222;
+            font-weight: bold;
+            font-size: 1em;
+            border-radius: 50%;
+            padding: 2px 8px;
+            margin-left: 2px;
+            min-width: 18px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(44,37,29,0.09);
         }
         .cart-popup {
             position: fixed;
-            top: 50px;
-            right: 20px;
+            top: 70px;
+            right: 30px;
             background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            width: 300px;
+            border: 2px solid #e9e3d6;
+            padding: 24px 24px 18px 24px;
+            width: 340px;
             display: none;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(44,37,29,0.13), 0 2px 12px rgba(188,156,74,0.13);
             z-index: 1000;
+            border-radius: 18px;
         }
         .cart-popup h3 {
+            font-family: 'Playfair Display', serif;
+            color: #bc9c4a;
             margin-top: 0;
+            font-size: 1.18em;
+            margin-bottom: 12px;
+            letter-spacing: 0.03em;
         }
         .cart-popup ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
+            max-height: 210px;
+            overflow-y: auto;
         }
-        .cart-popup ul li {
+        .cart-popup li {
             display: flex;
+            align-items: center;
             justify-content: space-between;
+            border-bottom: 1px solid #eee;
             padding: 10px 0;
+            gap: 12px;
         }
-        .cart-popup button {
-            background-color: #222;
-            color: white;
-            padding: 5px 10px;
+        .cart-popup .product-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 9px;
+            object-fit: cover;
+            margin-right: 0;
+            box-shadow: 0 1px 4px rgba(44,37,29,0.09);
+        }
+        .cart-popup .product-details {
+            flex: 1;
+            padding-left: 8px;
+        }
+        .cart-popup .product-name {
+            font-weight: 600;
+            font-size: 1em;
+            color: #222;
+        }
+        .cart-popup .product-price {
+            font-size: 0.95em;
+            color: #bc9c4a;
+        }
+        .cart-popup .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 6px;
+        }
+        .cart-popup .quantity-btn {
+            background: #bc9c4a;
+            color: #fff;
             border: none;
+            border-radius: 7px;
+            font-size: 1.08em;
+            padding: 2px 10px;
             cursor: pointer;
+            transition: background 0.15s;
         }
-        .cart-popup button:hover {
-            background-color: #444;
+        .cart-popup .quantity-btn:hover {
+            background: #222;
         }
-        .btn {
-            background-color: #222;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 50px;
+        .cart-popup .remove-btn {
+            background: #fff;
+            color: #d95555;
+            border: 1.5px solid #d95555;
+            border-radius: 7px;
+            font-size: 0.95em;
+            padding: 2px 10px;
+            cursor: pointer;
+            margin-left: 6px;
+        }
+        .cart-popup .remove-btn:hover {
+            background: #d95555;
+            color: #fff;
+        }
+        .cart-popup .cart-total {
+            text-align: right;
             font-weight: bold;
-            transition: background-color 0.3s ease;
-            display: inline-block;
-            text-align: center;
-            width: 100%; /* Ensures both buttons are the same size */
-            margin-bottom: 10px; /* Space between buttons */
+            font-size: 1.13em;
+            color: #bc9c4a;
+            margin-top: 12px;
+        }
+        .cart-popup .checkout-btn {
+            background: #bc9c4a;
+            color: #fff;
+            padding: 12px 0;
+            font-size: 1.07em;
+            border: none;
+            border-radius: 11px;
+            width: 100%;
+            cursor: pointer;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-top: 16px;
+            margin-bottom: 4px;
+            box-shadow: 0 1px 4px rgba(188,156,74,0.09);
+            transition: background 0.18s;
+        }
+        .cart-popup .checkout-btn:hover {
+            background: #222;
         }
 
-        .btn:hover {
-            background-color: #444;
-        }
-
-        /* Styling for the buttons specifically */
-        .product button,
-        .product a.btn {
-            width: 100%; /* Ensure both buttons take the same width */
-            padding: 12px 25px; /* Consistent padding for both buttons */
-            background-color: #222; /* Same background color for both buttons */
-            color: white; /* Same text color */
-            border-radius: 50px; /* Same border radius */
-            font-weight: bold; /* Same font weight */
-            transition: background-color 0.3s ease;
-            text-align: center;
-            display: inline-block; /* Ensures that they are treated as inline-block elements */
-        }
-
-        .product button:hover,
-        .product a.btn:hover {
-            background-color: #444; /* Same hover effect */
-        }
-
+        /* Banner Section with Scrolling Text */
         #hero-section {
-            background-image: url('images/home-banner.jpg'); /* Image as background */
-            background-size: cover; /* Cover the entire section */
-            background-position: center; /* Center the image */
-            padding: 100px 20px; /* Add extra padding for a large banner */
+            background-image: url('images/home-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 115px 20px 60px 20px;
             text-align: center;
-            color: black; /* Changed to black for better contrast */
+            color: #222;
             position: relative;
             z-index: 1;
+            overflow: hidden;
         }
-
-        #hero-section h2, #hero-section p {
-            color: black; /* Ensure text is visible against the nude-colored background */
+        #hero-section .hero-text {
+            max-width: 480px;
+            margin: 0 auto 30px auto;
+            background: rgba(245,245,245,0.82);
+            border-radius: 12px;
+            padding: 24px 10px 10px 10px;
+            position: relative;
+            z-index: 2;
         }
-
+        #hero-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            margin: 0 0 10px 0;
+        }
+        #hero-section p {
+            font-size: 1.15em;
+            margin: 0 0 8px 0;
+        }
         #hero-section .btn {
             background-color: #f2c1a1;
             color: #222;
-            padding: 12px 25px;
+            padding: 12px 34px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1.07em;
+            margin-top: 12px;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(188,156,74,0.09);
+            transition: background 0.2s;
+        }
+        #hero-section .btn:hover {
+            background-color: #eab089;
+            color: #222;
+        }
+        .banner-scroll {
+            width: 100vw;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+            height: 40px;
+        }
+        .banner-scroll .scroll-text {
+            display: inline-block;
+            white-space: nowrap;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25em;
+            color: #bc9c4a;
+            letter-spacing: 0.06em;
+            animation: scrollBanner 16s linear infinite;
+        }
+        @keyframes scrollBanner {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100vw); }
         }
 
+        /* Featured Products */
         #featured-products {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            padding: 50px;
+            gap: 32px;
+            padding: 60px 10px 32px 10px;
         }
         .product {
             background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 22px 18px 20px 18px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(44,37,29,0.09);
             text-align: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 260px;
         }
         .product:hover {
-            transform: scale(1.05);
+            transform: scale(1.07);
+            box-shadow: 0 8px 24px rgba(44,37,29,0.11);
         }
         .product img {
-            width: 50%;
+            width: 68%;
             height: auto;
             border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 6px rgba(44,37,29,0.07);
         }
+        .product h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.12em;
+            color: #222;
+            margin: 10px 0 6px 0;
+        }
+        .product p {
+            margin: 6px 0 12px 0;
+            color: #bc9c4a;
+            font-size: 1.09em;
+            font-weight: bold;
+        }
+        .product .btn,
+        .product button {
+            width: 100%;
+            padding: 12px 0;
+            background: #f2c1a1;
+            color: #222;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1em;
+            border: none;
+            box-shadow: 0 1px 6px rgba(188,156,74,0.09);
+            margin-bottom: 10px;
+            transition: background 0.18s;
+            cursor: pointer;
+        }
+        .product .btn:hover,
+        .product button:hover {
+            background: #eab089;
+            color: #222;
+        }
+        .product a {
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Info & Story Section (below products) */
+        .info-section {
+            background: #fff;
+            border-radius: 16px;
+            margin: 36px auto 0 auto;
+            max-width: 700px;
+            box-shadow: 0 2px 12px rgba(44,37,29,0.07);
+            padding: 36px 24px;
+            text-align: center;
+        }
+        .info-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: #bc9c4a;
+            font-size: 1.32em;
+            margin-top: 0;
+        }
+        .info-section p {
+            color: #222;
+            font-size: 1.09em;
+            margin-bottom: 0;
+        }
+        .info-section ul {
+            list-style: disc inside;
+            color: #bc9c4a;
+            padding-left: 0;
+            margin: 18px 0 0 0;
+            text-align: left;
+        }
+        .info-section ul li {
+            color: #222;
+            font-size: 1em;
+            margin-bottom: 8px;
+            padding-left: 0;
+        }
+
+        /* Newsletter Signup */
+        .newsletter-section {
+            background: #f2c1a1;
+            color: #222;
+            border-radius: 14px;
+            margin: 42px auto 30px auto;
+            max-width: 480px;
+            box-shadow: 0 1px 8px rgba(188,156,74,0.12);
+            padding: 28px 20px 22px 20px;
+            text-align: center;
+        }
+        .newsletter-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.13em;
+            margin: 0 0 14px 0;
+            color: #bc9c4a;
+        }
+        .newsletter-section input[type="email"] {
+            padding: 10px;
+            border-radius: 7px;
+            border: 1.5px solid #e9e3d6;
+            font-size: 1em;
+            margin-right: 8px;
+            width: 60%;
+        }
+        .newsletter-section button {
+            background: #bc9c4a;
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            font-size: 1em;
+            padding: 10px 24px;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-weight: bold;
+        }
+        .newsletter-section button:hover {
+            background: #222;
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 24px 0;
             background-color: #222;
             color: white;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1em;
             position: relative;
             bottom: 0;
             width: 100%;
+            letter-spacing: 0.06em;
         }
-
         /* Parallax effect */
         .parallax {
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
+        }
+        /* Responsive */
+        @media (max-width: 900px) {
+            #featured-products {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        @media (max-width: 600px) {
+            #featured-products, .cart-popup, .info-section, .newsletter-section {padding: 8px;}
+            .product {max-width: 98vw;}
+            .cart-popup {width: 96vw;}
         }
     </style>
 </head>
@@ -199,25 +450,35 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-        <div class="cart-icon" onclick="toggleCartPopup()">
-            🛒 <span id="cart-count">0</span>
+        <div class="cart-icon" onclick="toggleCartPopup()" title="View Cart">
+            <!-- Elegant thin SVG Cart Icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6h15l-1.5 9h-12l-1.5-9z" stroke="currentColor" stroke-width="1.1"/><circle cx="9" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/><circle cx="18" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/></svg>
+            <span class="cart-count" id="cart-count">0</span>
         </div>
     </header>
 
-    <!-- Hero Section with Parallax Effect -->
+    <!-- Hero Banner Section -->
     <section id="hero-section" class="parallax">
-        <h2>Fresh Scents for Your Home</h2>
-        <p>Inspired by Gen Z Living</p>
-        <a href="shop.html" class="btn">Shop Now</a>
+        <div class="hero-text">
+            <h2>Fresh Scents for Your Home</h2>
+            <p>Inspired by Gen Z Living. <br>Elevate your space with vibes and luxury aromas.</p>
+            <a href="shop.html" class="btn">Shop Now</a>
+        </div>
+        <!-- Scrolling Banner Text -->
+        <div class="banner-scroll">
+            <span class="scroll-text">
+                Fresh Scents • Shop Diffusers • Modern Luxury • Gen Z Inspired • Zenscents • Room Fragrance • Shop Now • Fresh Scents • Shop Diffusers • Modern Luxury • Gen Z Inspired • Zenscents • Room Fragrance • Shop Now • 
+            </span>
+        </div>
     </section>
 
+    <!-- Featured Products -->
     <section id="featured-products">
-        <h2>Our Best Sellers</h2>
         <div class="product">
             <img src="images/red-apple-diffuser.jpg" alt="Red Apple Diffuser">
             <h3>Red Apple Diffuser</h3>
             <p>R199</p>
-            <button onclick="addToCart('Red Apple Diffuser', 199)">Add to Cart</button>
+            <button onclick="addToCart('Red Apple Diffuser', 199, 'images/red-apple-diffuser.jpg')">Add to Cart</button>
             <a href="Red Apple Diffuser.html">
                 <button>View Product</button>
             </a>
@@ -226,19 +487,43 @@
             <img src="images/jasmine-diffuser.jpg" alt="Jasmine Diffuser">
             <h3>Jasmine Diffuser</h3>
             <p>R199</p>
-            <button onclick="addToCart('Jasmine Diffuser', 199)">Add to Cart</button>
+            <button onclick="addToCart('Jasmine Diffuser', 199, 'images/jasmine-diffuser.jpg')">Add to Cart</button>
             <a href="Jasmine Diffuser.html">
                 <button>View Product</button>
             </a>
         </div>
     </section>
 
+    <!-- Info Section / Brand Story (below products) -->
+    <section class="info-section">
+        <h3>Why Zenscents?</h3>
+        <p>We believe every home deserves to feel fresh, vibrant, and uniquely you. Our scents are crafted for the bold and creative, bringing a touch of luxury to everyday living.</p>
+        <ul>
+            <li>Premium, long-lasting fragrances</li>
+            <li>Modern designs perfect for any room</li>
+            <li>Locally made, eco-friendly packaging</li>
+            <li>Inspired by Gen Z style & energy</li>
+        </ul>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section">
+        <h4>Stay Up to Date & Get Exclusive Offers</h4>
+        <form onsubmit="subscribeNewsletter(event)">
+            <input type="email" placeholder="Your email address" required id="newsletter-email">
+            <button type="submit">Subscribe</button>
+        </form>
+        <div id="newsletter-message" style="margin-top:10px;color:#bc9c4a;"></div>
+    </section>
+
+    <!-- Modern Cart Popup -->
     <div id="cart-popup" class="cart-popup">
         <h3>Your Cart</h3>
         <ul id="cart-items">
             <!-- Cart items will appear here -->
         </ul>
-        <button onclick="checkout()">Proceed to Checkout</button>
+        <div class="cart-total" id="cart-total"></div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
     </div>
 
     <footer>
@@ -246,49 +531,110 @@
     </footer>
 
     <script>
-        // Initialize cart
+        // Cart structure
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Add item to cart
-        function addToCart(name, price) {
-            let item = { name, price, quantity: 1 };
-            cart.push(item);
+        // Add item to cart (with image)
+        function addToCart(name, price, imgSrc) {
+            let existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ name, price, imgSrc, quantity: 1 });
+            }
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartCount();
+            updateCartPopup();
         }
 
-        // Update cart count
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartPopup();
+        }
+
+        // Increase quantity
+        function increaseQuantity(index) {
+            cart[index].quantity += 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartPopup();
+        }
+
+        // Decrease quantity
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+            } else {
+                removeFromCart(index);
+                return;
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartPopup();
+        }
+
+        // Update cart count (shows total items)
         function updateCartCount() {
             let cartCount = cart.reduce((total, item) => total + item.quantity, 0);
             document.getElementById('cart-count').innerText = cartCount;
         }
 
-        // Update cart popup
+        // Update cart popup with breakdown
         function updateCartPopup() {
             let cartItems = document.getElementById('cart-items');
             cartItems.innerHTML = '';
-            cart.forEach(item => {
+            let total = 0;
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<li style="text-align:center;color:#aaa;">Your cart is empty.</li>';
+            }
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
                 let li = document.createElement('li');
-                li.textContent = `${item.name} - R${item.price} x ${item.quantity}`;
+                li.innerHTML = `<img src="${item.imgSrc}" class="product-img" alt="${item.name}">
+                    <div class="product-details">
+                        <span class="product-name">${item.name}</span>
+                        <div class="product-price">R${item.price} x ${item.quantity}</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+                            <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    </div>`;
                 cartItems.appendChild(li);
             });
+            document.getElementById('cart-total').innerText = cart.length ? "Total: R" + total.toFixed(2) : "";
         }
 
-        // Show or hide the cart popup
+        // Show/hide cart popup
         function toggleCartPopup() {
             let popup = document.getElementById('cart-popup');
             popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-            updateCartPopup();
+            if (popup.style.display === 'block') updateCartPopup();
         }
 
         // Proceed to checkout
         function checkout() {
-            // Redirect to checkout page (or process checkout)
             window.location.href = 'checkout.html';
         }
 
-        // Update cart count on page load
+        // Newsletter subscribe (dummy, just message)
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = document.getElementById('newsletter-email').value;
+            if (email) {
+                document.getElementById('newsletter-message').innerText = "Thank you for subscribing!";
+                document.getElementById('newsletter-email').value = "";
+            }
+        }
+
+        // Update cart count when page loads
         updateCartCount();
+
+        // Make cart available everywhere: Copy header/cart-popup/script to all pages!
     </script>
 </body>
 </html>
