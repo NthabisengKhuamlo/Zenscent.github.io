@@ -7,10 +7,10 @@
     <meta name="keywords" content="Zenscents, home fragrance, diffusers, scents, shop">
     <meta name="author" content="Nthabiseng Khumalo">
     <title>Zenscents | Shop</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
@@ -26,6 +26,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
         nav ul {
             list-style-type: none;
@@ -40,11 +42,173 @@
             color: white;
             text-decoration: none;
         }
+        .cart-icon {
+            position: absolute;
+            right: 28px;
+            top: 20px;
+            cursor: pointer;
+            background: #222;
+            padding: 12px;
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 8px rgba(44,37,29,0.08);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cart-icon svg {
+            width: 1.7em;
+            height: 1.7em;
+            vertical-align: middle;
+            stroke-width: 1.1;
+        }
+        .cart-icon:hover {
+            background: #444;
+            transform: scale(1.08);
+        }
+        .cart-count {
+            background: #fff;
+            color: #222;
+            font-weight: bold;
+            font-size: 1em;
+            border-radius: 50%;
+            padding: 2px 8px;
+            margin-left: 2px;
+            min-width: 18px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(44,37,29,0.09);
+        }
+        .cart-popup {
+            position: fixed;
+            top: 70px;
+            right: 30px;
+            background-color: #fff;
+            border: 2px solid #e9e3d6;
+            padding: 24px 24px 18px 24px;
+            width: 340px;
+            display: none;
+            box-shadow: 0 8px 32px rgba(44,37,29,0.13), 0 2px 12px rgba(188,156,74,0.13);
+            z-index: 1000;
+            border-radius: 18px;
+        }
+        .cart-popup h3 {
+            font-family: 'Playfair Display', serif;
+            color: #bc9c4a;
+            margin-top: 0;
+            font-size: 1.18em;
+            margin-bottom: 12px;
+            letter-spacing: 0.03em;
+        }
+        .cart-popup ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-height: 210px;
+            overflow-y: auto;
+        }
+        .cart-popup li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            gap: 12px;
+        }
+        .cart-popup .product-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 9px;
+            object-fit: cover;
+            margin-right: 0;
+            box-shadow: 0 1px 4px rgba(44,37,29,0.09);
+        }
+        .cart-popup .product-details {
+            flex: 1;
+            padding-left: 8px;
+        }
+        .cart-popup .product-name {
+            font-weight: 600;
+            font-size: 1em;
+            color: #222;
+        }
+        .cart-popup .product-price {
+            font-size: 0.95em;
+            color: #bc9c4a;
+        }
+        .cart-popup .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 6px;
+        }
+        .cart-popup .quantity-btn {
+            background: #bc9c4a;
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            font-size: 1.08em;
+            padding: 2px 10px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .cart-popup .quantity-btn:hover {
+            background: #222;
+        }
+        .cart-popup .remove-btn {
+            background: #fff;
+            color: #d95555;
+            border: 1.5px solid #d95555;
+            border-radius: 7px;
+            font-size: 0.95em;
+            padding: 2px 10px;
+            cursor: pointer;
+            margin-left: 6px;
+        }
+        .cart-popup .remove-btn:hover {
+            background: #d95555;
+            color: #fff;
+        }
+        .cart-popup .cart-total {
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.13em;
+            color: #bc9c4a;
+            margin-top: 12px;
+        }
+        .cart-popup .checkout-btn {
+            background: #bc9c4a;
+            color: #fff;
+            padding: 12px 0;
+            font-size: 1.07em;
+            border: none;
+            border-radius: 11px;
+            width: 100%;
+            cursor: pointer;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-top: 16px;
+            margin-bottom: 4px;
+            box-shadow: 0 1px 4px rgba(188,156,74,0.09);
+            transition: background 0.18s;
+        }
+        .cart-popup .checkout-btn:hover {
+            background: #222;
+        }
         #shop-products {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             padding: 50px;
+            position: relative;
+        }
+        .product-section-title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
         }
         .product {
             background-color: white;
@@ -52,10 +216,11 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .product:hover {
-            transform: scale(1.05);
+            transform: scale(1.07);
+            box-shadow: 0 8px 24px rgba(44,37,29,0.11);
         }
         .product img {
             width: 100%;
@@ -107,7 +272,7 @@
         footer p {
             margin: 0;
         }
-        /* Floral accents */
+        /* Floral accents (optional, if using) */
         .floral-background {
             background-image: url('flower-placeholder.jpg');
             background-repeat: no-repeat;
@@ -130,12 +295,6 @@
                 margin-bottom: 20px;
             }
         }
-        .product-section-title {
-            font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 30px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -149,80 +308,191 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        <div class="cart-icon" onclick="toggleCartPopup()" title="View Cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M6 6h15l-1.5 9h-12l-1.5-9z" stroke="currentColor" stroke-width="1.1"/>
+                <circle cx="9" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/>
+                <circle cx="18" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/>
+            </svg>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
     </header>
-    
+
     <section id="shop-products">
         <h2 class="product-section-title">Shop Our Collection</h2>
         <div class="product">
             <img src="images/red-apple-diffuser.jpg" alt="Red Apple Diffuser">
             <h3>Red Apple Diffuser</h3>
             <p>R199</p>
-            <button class="btn add-to-cart">Add to Cart</button>   
-             <a href="Red Apple Diffuser.html">
-        <button>View Product</button>
-        </a>
-
+            <button class="btn add-to-cart" onclick="addToCart('Red Apple Diffuser', 199, 'images/red-apple-diffuser.jpg')">Add to Cart</button>
+            <a href="Red Apple Diffuser.html">
+                <button class="view-details">View Product</button>
+            </a>
         </div>
         <div class="product">
             <img src="images/jasmine-diffuser.jpg" alt="Jasmine Diffuser">
             <h3>Jasmine Diffuser</h3>
             <p>R199</p>
-            <button class="btn add-to-cart">Add to Cart</button>
-             <a href="Jasmine Diffuser.html">
-        <button>View Product</button>
-        </a>
+            <button class="btn add-to-cart" onclick="addToCart('Jasmine Diffuser', 199, 'images/jasmine-diffuser.jpg')">Add to Cart</button>
+            <a href="Jasmine Diffuser.html">
+                <button class="view-details">View Product</button>
+            </a>
         </div>
         <div class="product">
             <img src="images/blue-ocean-diffuser.jpg" alt="Blue Ocean Diffuser">
             <h3>Blue Ocean Diffuser</h3>
             <p>R199</p>
-            <button class="btn add-to-cart">Add to Cart</button>
-              <a href="Blue Ocean Diffuser.html">
-        <button>View Product</button>
-        </a>
+            <button class="btn add-to-cart" onclick="addToCart('Blue Ocean Diffuser', 199, 'images/blue-ocean-diffuser.jpg')">Add to Cart</button>
+            <a href="Blue Ocean Diffuser.html">
+                <button class="view-details">View Product</button>
+            </a>
         </div>
         <div class="product">
             <img src="images/caramel-champagne-diffuser.jpg" alt="Caramel Champagne Diffuser">
             <h3>Caramel Champagne Diffuser</h3>
             <p>R199</p>
-            <button class="btn add-to-cart">Add to Cart</button>
-              <a href="Caramel Champagne Diffuser.html">
-        <button>View Product</button>
-        </a>
+            <button class="btn add-to-cart" onclick="addToCart('Caramel Champagne Diffuser', 199, 'images/caramel-champagne-diffuser.jpg')">Add to Cart</button>
+            <a href="Caramel Champagne Diffuser.html">
+                <button class="view-details">View Product</button>
+            </a>
         </div>
         <div class="product">
             <img src="images/pomegranate-diffuser.jpg" alt="Pomegranate Diffuser">
             <h3>Pomegranate Diffuser</h3>
             <p>R199</p>
-            <button class="btn add-to-cart">Add to Cart</button>
-              <a href="Pomegranate Diffuser.html">
-        <button>View Product</button>
-        </a>
+            <button class="btn add-to-cart" onclick="addToCart('Pomegranate Diffuser', 199, 'images/pomegranate-diffuser.jpg')">Add to Cart</button>
+            <a href="Pomegranate Diffuser.html">
+                <button class="view-details">View Product</button>
+            </a>
         </div>
         <div class="product">
             <img src="images/vanilla-diffuser.jpg" alt="Vanilla Diffuser">
             <h3>Vanilla Diffuser</h3>
             <p>R199</p>
-            <button class="btn add-to-cart">Add to Cart</button>
-              <a href="Vanilla Diffuser.html">
-        <button>View Product</button>
-        </a>
+            <button class="btn add-to-cart" onclick="addToCart('Vanilla Diffuser', 199, 'images/vanilla-diffuser.jpg')">Add to Cart</button>
+            <a href="Vanilla Diffuser.html">
+                <button class="view-details">View Product</button>
+            </a>
         </div>
         <div class="product">
             <img src="images/lemongrass-diffuser.jpg" alt="Lemongrass Diffuser">
             <h3>Lemongrass Diffuser</h3>
             <p>R199</p>
-            <button class="btn add-to-cart">Add to Cart</button>
-              <a href="Lemongrass Diffuser.html">
-        <button>View Product</button>
-        </a>
+            <button class="btn add-to-cart" onclick="addToCart('Lemongrass Diffuser', 199, 'images/lemongrass-diffuser.jpg')">Add to Cart</button>
+            <a href="Lemongrass Diffuser.html">
+                <button class="view-details">View Product</button>
+            </a>
         </div>
     </section>
 
     <a href="shop.html" id="load-more">Load More</a>
 
+    <div id="cart-popup" class="cart-popup">
+        <h3>Your Cart</h3>
+        <ul id="cart-items">
+            <!-- Cart items will appear here -->
+        </ul>
+        <div class="cart-total" id="cart-total"></div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+
     <footer>
         <p>&copy; 2025 Zenscents. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        // Cart structure
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Add item to cart (with image)
+        function addToCart(name, price, imgSrc) {
+            let existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ name, price, imgSrc, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartPopup();
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartPopup();
+        }
+
+        // Increase quantity
+        function increaseQuantity(index) {
+            cart[index].quantity += 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartPopup();
+        }
+
+        // Decrease quantity
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+            } else {
+                removeFromCart(index);
+                return;
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartPopup();
+        }
+
+        // Update cart count (shows total items)
+        function updateCartCount() {
+            let cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').innerText = cartCount;
+        }
+
+        // Update cart popup with breakdown
+        function updateCartPopup() {
+            let cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            let total = 0;
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<li style="text-align:center;color:#aaa;">Your cart is empty.</li>';
+            }
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                let li = document.createElement('li');
+                li.innerHTML = `<img src="${item.imgSrc}" class="product-img" alt="${item.name}">
+                    <div class="product-details">
+                        <span class="product-name">${item.name}</span>
+                        <div class="product-price">R${item.price} x ${item.quantity}</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+                            <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    </div>`;
+                cartItems.appendChild(li);
+            });
+            document.getElementById('cart-total').innerText = cart.length ? "Total: R" + total.toFixed(2) : "";
+        }
+
+        // Show/hide cart popup
+        function toggleCartPopup() {
+            let popup = document.getElementById('cart-popup');
+            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+            if (popup.style.display === 'block') updateCartPopup();
+        }
+
+        // Proceed to checkout
+        function checkout() {
+            window.location.href = 'checkout.html';
+        }
+
+        // Update cart count when page loads
+        updateCartCount();
+    </script>
 </body>
 </html>
