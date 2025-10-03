@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zenscents - Fresh Scents for Your Home, Inspired by Gen Z Living">
+    <meta name="keywords" content="Zenscents, home fragrance, diffusers, scents, shop">
+    <meta name="author" content="Nthabiseng Khumalo">
+    <title>Zenscents | Portfolio</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTR7BNSGK5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTR7BNSGK5');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #222;
+        }
+        header {
+            background-color: #222;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 2px 16px rgba(44,37,29,0.08);
+        }
+        header h1 {
+            margin: 10px 0;
+            font-family: 'Playfair Display', serif;
+        }
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        header nav ul li {
+            margin: 0 15px;
+        }
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            transition: color 0.3s;
+        }
+        header nav ul li a:hover {
+            color: #f2c1a1;
+        }
+        .cart-icon {
+            position: absolute;
+            right: 28px;
+            top: 16px;
+            cursor: pointer;
+            background: #222;
+            padding: 12px;
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 8px rgba(44,37,29,0.08);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cart-icon svg {
+            width: 1.7em;
+            height: 1.7em;
+            vertical-align: middle;
+            stroke-width: 1.1;
+        }
+        .cart-icon:hover {
+            background: #444;
+            transform: scale(1.08);
+        }
+        .cart-count {
+            background: #fff;
+            color: #222;
+            font-weight: bold;
+            font-size: 1em;
+            border-radius: 50%;
+            padding: 2px 8px;
+            margin-left: 2px;
+            min-width: 18px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(44,37,29,0.09);
+        }
+
+        /* Portfolio Hero Section */
+        .portfolio-hero {
+            background: linear-gradient(135deg, #bc9c4a 0%, #f2c1a1 100%);
+            padding: 80px 20px 60px 20px;
+            text-align: center;
+            color: white;
+        }
+        .portfolio-hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin: 0 0 15px 0;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .portfolio-hero p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Tab Navigation */
+        .tab-container {
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+            padding: 0 20px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            border-bottom: 3px solid #e9e3d6;
+            margin-bottom: 40px;
+        }
+        .tab-button {
+            background: transparent;
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+            letter-spacing: 0.03em;
+        }
+        .tab-button:hover {
+            color: #bc9c4a;
+        }
+        .tab-button.active {
+            color: #bc9c4a;
+        }
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #bc9c4a;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Portfolio Cards */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .portfolio-card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(44,37,29,0.09);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(44,37,29,0.15);
+        }
+        .portfolio-card .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #e9e3d6;
+        }
+        .portfolio-card .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .portfolio-card .card-meta {
+            color: #bc9c4a;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .portfolio-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #222;
+            font-size: 1.2em;
+            margin: 0 0 12px 0;
+            line-height: 1.4;
+        }
+        .portfolio-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            flex-grow: 1;
+        }
+        .portfolio-card .card-link {
+            color: #bc9c4a;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+            margin-top: auto;
+        }
+        .portfolio-card .card-link:hover {
+            gap: 10px;
+        }
+
+        /* Video Cards */
+        .video-card {
+            background: white;
+            border-radius: 14px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(44,37,29,0.09);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(44,37,29,0.15);
+        }
+        .video-card .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #bc9c4a, #f2c1a1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: white;
+            position: relative;
+        }
+        .video-card .video-type {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            color: #bc9c4a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.4em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .video-card .video-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .video-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #222;
+            font-size: 1.1em;
+            margin: 0 0 10px 0;
+        }
+        .video-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            flex-grow: 1;
+        }
+        .video-card .card-link {
+            color: #bc9c4a;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: auto;
+        }
+
+        /* Section Headers */
+        .section-header {
+            color: #222;
+            margin: 40px 0 25px 0;
+            font-size: 1.1em;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9e3d6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 0;
+            background-color: #222;
+            color: white;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1em;
+            margin-top: 60px;
+            letter-spacing: 0.06em;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-hero h2 {
+                font-size: 2em;
+            }
+            .tab-button {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Zenscents</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="toggleCartPopup()" title="View Cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6h15l-1.5 9h-12l-1.5-9z" stroke="currentColor" stroke-width="1.1"/><circle cx="9" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/><circle cx="18" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/></svg>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </header>
+
+    <!-- Portfolio Hero -->
+    <section class="portfolio-hero">
+        <h2>Marketing Portfolio</h2>
+        <p>Showcasing content creation, strategy, and brand growth across Rugged SA and Zenscents projects</p>
+    </section>
+
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'rugged-sa')">Rugged SA</button>
+            <button class="tab-button" onclick="openTab(event, 'zenscents')">Zenscents</button>
+        </div>
+
+        <!-- Rugged SA Tab Content -->
+        <div id="rugged-sa" class="tab-content active">
+            <h2 style="font-family: 'Playfair Display', serif; color: #bc9c4a; margin-bottom: 30px;">Content & Marketing at Rugged SA</h2>
+            
+            <!-- Blog Articles Section -->
+            <h3 class="section-header">📝 Published Articles</h3>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <img src="https://ruggedsa.co.za/wp-content/uploads/2025/08/blog-post-2025-August-1.jpg" alt="Smart vs Rugged Tablets" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">Blog Post • Website</div>
+                        <h3>Smart Tablets vs Rugged Tablets: Key Benefits & Buying Guide 2025</h3>
+                        <p>Comprehensive buying guide comparing consumer smart tablets with industrial rugged tablets, covering durability, use cases, and ROI for businesses.</p>
+                        <a href="https://ruggedsa.co.za/smart-tablets-vs-rugged-tablets-key-benefits-buying-guide-2025/" target="_blank" class="card-link">Read Article →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <img src="https://ruggedsa.co.za/wp-content/uploads/2025/06/June-23-ZB-1.jpg" alt="Rugged Phones" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">Blog Post • Website</div>
+                        <h3>Rugged Phones for Outdoor Professionals: The Most Underrated Tool</h3>
+                        <p>Deep dive into why outdoor professionals need rugged smartphones, highlighting durability features, battery life, and specialized capabilities for field work.</p>
+                        <a href="https://ruggedsa.co.za/rugged-phones-for-outdoor-professionals-the-most-underrated-tool/" target="_blank" class="card-link">Read Article →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <img src="https://ruggedsa.co.za/wp-content/uploads/2025/06/Industrial-Printers-Image.png" alt="Industrial Printers" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">Blog Post • Website</div>
+                        <h3>Printing for Profit: Maximize Output with Industrial Label Printers</h3>
+                        <p>Business-focused guide on enterprise printing solutions, featuring product comparisons and ROI benefits for warehouse and logistics operations.</p>
+                        <a href="https://ruggedsa.co.za/printing-for-profit-maximize-your-output-with-rugged-sas-industrial-label-printers/" target="_blank" class="card-link">Read Article →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <img src="https://ruggedsa.co.za/wp-content/uploads/2025/06/June-23-ZB-1.jpg" alt="Budget Rugged Phones" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">Blog Post • Website</div>
+                        <h3>Best Rugged Phones Under R10,000 | Rugged SA</h3>
+                        <p>Curated buying guide featuring affordable rugged smartphone options with detailed specs, pricing, and use-case recommendations for South African buyers.</p>
+                        <a href="https://ruggedsa.co.za/best-rugged-phones-under-r10-000-rugged-sa/" target="_blank" class="card-link">Read Article →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YouTube Videos Section -->
+            <h3 class="section-header">🎥 Video Content</h3>
+            <div class="portfolio-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        ▶
+                        <span class="video-type">YouTube</span>
+                    </div>
+                    <div class="video-content">
+                        <h3>Rugged SA Product Feature</h3>
+                        <p>Product demonstration and feature overview showcasing rugged technology solutions for business and field professionals.</p>
+                        <a href="https://youtu.be/JgTWJUh1d6k" target="_blank" class="card-link">Watch Video →</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        ▶
+                        <span class="video-type">Short</span>
+                    </div>
+                    <div class="video-content">
+                        <h3>Quick Product Demo</h3>
+                        <p>Short-form content highlighting key product features and benefits in an engaging, social-first format.</p>
+                        <a href="https://www.youtube.com/shorts/8Y-9kRV3Vww" target="_blank" class="card-link">Watch Short →</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        ▶
+                        <span class="video-type">Short</span>
+                    </div>
+                    <div class="video-content">
+                        <h3>Rugged Tech in Action</h3>
+                        <p>Real-world application showcase demonstrating durability and performance in challenging environments.</p>
+                        <a href="https://www.youtube.com/shorts/BInOSSFiPGo" target="_blank" class="card-link">Watch Short →</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        ▶
+                        <span class="video-type">YouTube</span>
+                    </div>
+                    <div class="video-content">
+                        <h3>Industry Solutions Overview</h3>
+                        <p>Educational content explaining how rugged technology solves industry-specific challenges for businesses.</p>
+                        <a href="https://youtu.be/-GY0djj40ac" target="_blank" class="card-link">Watch Video →</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        ▶
+                        <span class="video-type">YouTube</span>
+                    </div>
+                    <div class="video-content">
+                        <h3>Product Unboxing & Review</h3>
+                        <p>Detailed unboxing experience and first impressions of rugged devices, highlighting build quality and accessories.</p>
+                        <a href="https://youtu.be/add_dQ_izLU" target="_blank" class="card-link">Watch Video →</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        ▶
+                        <span class="video-type">YouTube</span>
+                    </div>
+                    <div class="video-content">
+                        <h3>Technical Features Breakdown</h3>
+                        <p>In-depth technical walkthrough covering specifications, certifications, and performance benchmarks.</p>
+                        <a href="https://youtu.be/MwbYR5j1RXc" target="_blank" class="card-link">Watch Video →</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        ▶
+                        <span class="video-type">YouTube</span>
+                    </div>
+                    <div class="video-content">
+                        <h3>Customer Success Story</h3>
+                        <p>Real customer testimonial and use-case demonstration showing business impact and ROI from rugged solutions.</p>
+                        <a href="https://youtu.be/dV9hfo1-ZkY" target="_blank" class="card-link">Watch Video →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zenscents Tab Content -->
+        <div id="zenscents" class="tab-content">
+            <h2 style="font-family: 'Playfair Display', serif; color: #bc9c4a; margin-bottom: 30px;">Zenscents Growth Project</h2>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <div class="card-meta">Analytics & Strategy</div>
+                        <h3>Google Analytics Integration</h3>
+                        <p>Set up comprehensive tracking for user behavior, conversion funnels, and traffic sources. Monitoring key metrics to optimize marketing efforts and measure campaign effectiveness.</p>
+                        <a href="#" class="card-link">View Dashboard →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <div class="card-meta">Content Planning</div>
+                        <h3>Social Media Calendar</h3>
+                        <p>Created 90-day content calendar with strategic posting schedule across Instagram, TikTok, and LinkedIn to build brand awareness and engage Gen Z audience.</p>
+                        <a href="#" class="card-link">View Calendar →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <div class="card-meta">Social Media</div>
+                        <h3>Instagram Campaign Strategy</h3>
+                        <p>Developed Gen Z-focused campaign featuring product styling tips, behind-the-scenes content, and user-generated content strategy to drive engagement.</p>
+                        <a href="#" class="card-link">View Campaign →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <div class="card-meta">Copywriting</div>
+                        <h3>Brand Voice & Messaging</h3>
+                        <p>Crafted authentic brand voice that resonates with Gen Z audience. Created product descriptions, email campaigns, and social copy that drives conversions.</p>
+                        <a href="#" class="card-link">View Examples →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <div class="card-meta">Campaign</div>
+                        <h3>Launch Campaign</h3>
+                        <p>End-to-end campaign planning for Zenscents launch including teaser content, influencer outreach strategy, and promotional offers to maximize initial impact.</p>
+                        <a href="#" class="card-link">View Campaign →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <div class="card-meta">Growth</div>
+                        <h3>Email Marketing Strategy</h3>
+                        <p>Built email nurture sequences for newsletter subscribers including welcome series, product education, and seasonal promotions to drive repeat purchases.</p>
+                        <a href="#" class="card-link">View Strategy →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Zenscents. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Tab Switching Function
+        function openTab(evt, tabName) {
+            let tabContent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            
+            let tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Cart Functions
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCount() {
+            let cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').innerText = cartCount;
+        }
+
+        function toggleCartPopup() {
+            window.location.href = 'index.html';
+        }
+
+        updateCartCount();
+    </script>
+</body>
+</html>
