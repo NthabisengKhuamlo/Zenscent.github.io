@@ -1,264 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Site Verification -->
-    <meta name="google-site-verification" content="JJZX3QknVYiXwofdDFWWJSCW-h-3wz4tNpr-bmT73-k" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zenscents - Fresh Scents for Your Home, Inspired by Gen Z Living">
+  <meta name="keywords" content="Zenscents, home fragrance, diffusers, scents, shop">
+  <meta name="author" content="Nthabiseng Khumalo">
+  <meta name="google-site-verification" content="JJZX3QknVYiXwofdDFWWJSCW-h-3wz4tNpr-bmT73-k" />
+  <title>Zenscents | Home</title>
 
-    <title>Zenscents | Home</title>
-    <meta name="description" content="Zenscents - Fresh Scents for Your Home, Inspired by Gen Z Living">
-    <meta name="keywords" content="Zenscents, home fragrance, diffusers, scents, shop">
-    <meta name="author" content="Nthabiseng Khumalo">
+  <!-- Google Analytics / GTM -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTR7BNSGK5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KTR7BNSGK5');
+  </script>
 
-    <!-- Google Tag Manager / Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTR7BNSGK5"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-KTR7BNSGK5');
-    </script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General styles */
+    body { font-family: 'Montserrat', Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; color:#222;}
+    header { background:#222; color:white; padding:10px 20px; text-align:center; position:relative; z-index:10; box-shadow:0 2px 16px rgba(44,37,29,0.08);}
+    header nav ul { list-style:none; padding:0; margin:0; display:flex; justify-content:center;}
+    header nav ul li { margin:0 15px;}
+    header nav ul li a { color:white; text-decoration:none; font-weight:600; letter-spacing:0.06em;}
+    .cart-icon { position:absolute; right:28px; top:16px; cursor:pointer; background:#222; padding:12px; border-radius:50%; color:white; transition:background-color 0.3s, transform 0.3s; display:flex; align-items:center; gap:6px;}
+    .cart-icon:hover { background:#444; transform:scale(1.08);}
+    .cart-count { background:#fff; color:#222; font-weight:bold; font-size:1em; border-radius:50%; padding:2px 8px; min-width:18px; text-align:center; box-shadow:0 1px 4px rgba(44,37,29,0.09);}
+    /* Hero Section */
+    #hero-section { background-image:url('images/home-banner.jpg'); background-size:cover; background-position:center; padding:115px 20px 60px 20px; text-align:center; color:#222; position:relative; z-index:1; overflow:hidden;}
+    #hero-section .hero-text { max-width:480px; margin:0 auto 30px auto; background:rgba(245,245,245,0.82); border-radius:12px; padding:24px 10px 10px 10px; position:relative; z-index:2;}
+    #hero-section h2 { font-family:'Playfair Display', serif; font-size:2.2em; margin:0 0 10px 0;}
+    #hero-section p { font-size:1.15em; margin:0 0 8px 0;}
+    #hero-section .btn { background-color:#f2c1a1; color:#222; padding:12px 34px; border-radius:50px; text-decoration:none; font-weight:bold; font-size:1.07em; margin-top:12px; display:inline-block; box-shadow:0 2px 8px rgba(188,156,74,0.09); transition:background 0.2s;}
+    #hero-section .btn:hover { background-color:#eab089; color:#222;}
+    .banner-scroll { width:100vw; position:absolute; left:0; bottom:0; z-index:1; overflow:hidden; pointer-events:none; height:40px;}
+    .banner-scroll .scroll-text { display:inline-block; white-space:nowrap; font-family:'Playfair Display', serif; font-size:1.25em; color:#bc9c4a; letter-spacing:0.06em; animation:scrollBanner 16s linear infinite;}
+    @keyframes scrollBanner { 0% { transform:translateX(100vw);} 100% { transform:translateX(-100vw);} }
 
-    <!-- Your CSS style block -->
-    <style>
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #222;
-        }
-        header {
-            background-color: #222;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            box-shadow: 0 2px 16px rgba(44,37,29,0.08);
-        }
-        header nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        header nav ul li {
-            margin: 0 15px;
-        }
-        header nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-        }
-        .cart-icon {
-            position: absolute;
-            right: 28px;
-            top: 16px;
-            cursor: pointer;
-            background: #222;
-            padding: 12px;
-            border-radius: 50%;
-            color: white;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 2px 8px rgba(44,37,29,0.08);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .cart-icon svg {
-            width: 1.7em;
-            height: 1.7em;
-            vertical-align: middle;
-            stroke-width: 1.1;
-        }
-        .cart-icon:hover {
-            background: #444;
-            transform: scale(1.08);
-        }
-        .cart-count {
-            background: #fff;
-            color: #222;
-            font-weight: bold;
-            font-size: 1em;
-            border-radius: 50%;
-            padding: 2px 8px;
-            margin-left: 2px;
-            min-width: 18px;
-            text-align: center;
-            box-shadow: 0 1px 4px rgba(44,37,29,0.09);
-        }
-        .cart-popup {
-            position: fixed;
-            top: 70px;
-            right: 30px;
-            background-color: #fff;
-            border: 2px solid #e9e3d6;
-            padding: 24px 24px 18px 24px;
-            width: 340px;
-            display: none;
-            box-shadow: 0 8px 32px rgba(44,37,29,0.13), 0 2px 12px rgba(188,156,74,0.13);
-            z-index: 1000;
-            border-radius: 18px;
-        }
-        .cart-popup h3 {
-            font-family: 'Playfair Display', serif;
-            color: #bc9c4a;
-            margin-top: 0;
-            font-size: 1.18em;
-            margin-bottom: 12px;
-            letter-spacing: 0.03em;
-        }
-        .cart-popup ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            max-height: 210px;
-            overflow-y: auto;
-        }
-        .cart-popup li {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #eee;
-            padding: 10px 0;
-            gap: 12px;
-        }
-        .cart-popup .product-img {
-            width: 48px;
-            height: 48px;
-            border-radius: 9px;
-            object-fit: cover;
-            margin-right: 0;
-            box-shadow: 0 1px 4px rgba(44,37,29,0.09);
-        }
-        .cart-popup .product-details {
-            flex: 1;
-            padding-left: 8px;
-        }
-        .cart-popup .product-name {
-            font-weight: 600;
-            font-size: 1em;
-            color: #222;
-        }
-        .cart-popup .product-price {
-            font-size: 0.95em;
-            color: #bc9c4a;
-        }
-        .cart-popup .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 6px;
-        }
-        .cart-popup .quantity-btn {
-            background: #bc9c4a;
-            color: #fff;
-            border: none;
-            border-radius: 7px;
-            font-size: 1.08em;
-            padding: 2px 10px;
-            cursor: pointer;
-            transition: background 0.15s;
-        }
-        .cart-popup .quantity-btn:hover {
-            background: #222;
-        }
-        .cart-popup .remove-btn {
-            background: #fff;
-            color: #d95555;
-            border: 1.5px solid #d95555;
-            border-radius: 7px;
-            font-size: 0.95em;
-            padding: 2px 10px;
-            cursor: pointer;
-            margin-left: 6px;
-        }
-        .cart-popup .remove-btn:hover {
-            background: #d95555;
-            color: #fff;
-        }
-        .cart-popup .cart-total {
-            text-align: right;
-            font-weight: bold;
-            font-size: 1.13em;
-            color: #bc9c4a;
-            margin-top: 12px;
-        }
-        .cart-popup .checkout-btn {
-            background: #bc9c4a;
-            color: #fff;
-            padding: 12px 0;
-            font-size: 1.07em;
-            border: none;
-            border-radius: 11px;
-            width: 100%;
-            cursor: pointer;
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            margin-top: 16px;
-            margin-bottom: 4px;
-            box-shadow: 0 1px 4px rgba(188,156,74,0.09);
-            transition: background 0.18s;
-        }
-        .cart-popup .checkout-btn:hover {
-            background: #222;
-        }
+    /* Featured Products */
+    #featured-products { display:flex; justify-content:center; gap:32px; padding:60px 10px 32px 10px;}
+    .product { background:white; padding:22px 18px 20px 18px; border-radius:14px; box-shadow:0 2px 12px rgba(44,37,29,0.09); text-align:center; transition:transform 0.3s, box-shadow 0.3s; max-width:260px;}
+    .product:hover { transform:scale(1.07); box-shadow:0 8px 24px rgba(44,37,29,0.11);}
+    .product img { width:68%; height:auto; border-radius:10px; margin-bottom:10px; box-shadow:0 1px 6px rgba(44,37,29,0.07);}
+    .product h3 { font-family:'Playfair Display', serif; font-size:1.12em; color:#222; margin:10px 0 6px 0;}
+    .product p { margin:6px 0 12px 0; color:#bc9c4a; font-size:1.09em; font-weight:bold;}
+    .product .btn, .product button { width:100%; padding:12px 0; background:#f2c1a1; color:#222; border-radius:50px; font-weight:bold; font-size:1em; border:none; box-shadow:0 1px 6px rgba(188,156,74,0.09); margin-bottom:10px; transition:background 0.18s; cursor:pointer;}
+    .product .btn:hover, .product button:hover { background:#eab089; color:#222;}
 
-        /* Banner Section with Scrolling Text */
-        #hero-section {
-            background-image: url('images/home-banner.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 115px 20px 60px 20px;
-            text-align: center;
-            color: #222;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-        }
-        #hero-section .hero-text {
-            max-width: 480px;
-            margin: 0 auto 30px auto;
-            background: rgba(245,245,245,0.82);
-            border-radius: 12px;
-            padding: 24px 10px 10px 10px;
-            position: relative;
-            z-index: 2;
-        }
-        #hero-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2em;
-            margin: 0 0 10px 0;
-        }
-        #hero-section p {
-            font-size: 1.15em;
-            margin: 0 0 8px 0;
-        }
-        #hero-section .btn {
-            background-color: #f2c1a1;
-            color: #222;
-            padding: 12px 34px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.07em;
-            margin-top: 12px;
-            display: inline-block;
-            box-shadow: 0 2px 8px rgba(188,156,74,0.09);
-            transition: background 0.2s;
-        }
-        #hero-section .btn:hover {
-            background-color: #eab089;
-            color: #222;
-        }
-        .banner-scroll {
-            widt
+    /* Info Section */
+    .info-section { background:#fff; border-radius:16px; margin:36px auto 0 auto; max-width:700px; box-shadow:0 2px 12px rgba(44,37,29,0.07); padding:36px 24px; text-align:center;}
+    .info-section h3 { font-family:'Playfair Display', serif; color:#bc9c4a; font-size:1.32em; margin-top:0;}
+    .info-section p { color:#222; font-size:1.09em; margin-bottom:0;}
+    .info-section ul { list-style:disc inside; color:#222; padding-left:0; margin:18px 0 0 0; text-align:left;}
+    .info-section ul li { color:#222; font-size:1em; margin-bottom:8px; padding-left:0;}
+
+    /* Newsletter */
+    .newsletter-section { background:#f2c1a1; color:#222; border-radius:14px; margin:42px auto 30px auto; max-width:480px; box-shadow:0 1px 8px rgba(188,156,74,0.12); padding:28px 20px 22px 20px; text-align:center;}
+    .newsletter-section h4 { font-family:'Playfair Display', serif; font-size:1.13em; margin:0 0 14px 0; color:#bc9c4a;}
+    .newsletter-section input[type="email"] { padding:10px; border-radius:7px; border:1.5px solid #e9e3d6; font-size:1em; margin-right:8px; width:60%;}
+    .newsletter-section button { background:#bc9c4a; color:#fff; border:none; border-radius:7px; font-size:1em; padding:10px 24px; cursor:pointer; transition:background 0.15s; font-weight:bold;}
+    .newsletter-section button:hover { background:#222;}
+
+    /* Cart Popup */
+    .cart-popup { position:fixed; top:70px; right:30px; background-color:#fff; border:2px solid #e9e3d6; padding:24px; width:340px; display:none; box-shadow:0 8px 32px rgba(44,37,29,0.13),0 2px 12px rgba(188,156,74,0.13); z-index:1000; border-radius:18px;}
+    .cart-popup h3 { font-family:'Playfair Display', serif; color:#bc9c4a; margin-top:0; font-size:1.18em; margin-bottom:12px; letter-spacing:0.03em;}
+    .cart-popup ul { list-style:none; padding:0; margin:0; max-height:210px; overflow-y:auto;}
+    .cart-popup li { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #eee; padding:10px 0; gap:12px;}
+    .cart-popup .product-img { width:48px; height:48px; border-radius:9px; object-fit:cover; box-shadow:0 1px 4px rgba(44,37,29,0.09);}
+    .cart-popup .product-details { flex:1; padding-left:8px;}
+    .cart-popup .product-name { font-weight:600; font-size:1em; color:#222;}
+    .cart-popup .product-price { font-size:0.95em; color:#bc9c4a;}
+    .cart-popup .quantity-controls { display:flex; align-items:center; gap:5px; margin-top:6px;}
+    .cart-popup .quantity-btn { background:#bc9c4a; color:#fff; border:none; border-radius:7px; font-size:1.08em; padding:2px 10px; cursor:pointer; transition:background 0.15s;}
+    .cart-popup .quantity-btn:hover { background:#222;}
+    .cart-popup .remove-btn { background:#fff; color:#d95555; border:1.5px solid #d95555; border-radius:7px; font-size:0.95em; padding:2px 10px; cursor:pointer; margin-left:6px;}
+    .cart-popup .remove-btn:hover { background:#d95555; color:#fff;}
+    .cart-popup .cart-total { text-align:right; font-weight:bold; font-size:1.13em; color:#bc9c4a; margin-top:12px;}
+    .cart-popup .checkout-btn { background:#bc9c4a; color:#fff; padding:12px 0; font-size:1.07em; border:none; border-radius:11px; width:100%; cursor:pointer; font-family:'Montserrat', Arial, sans-serif; font-weight:600; letter-spacing:0.02em; margin-top:16px; margin-bottom:4px; box-shadow:0 1px 4px rgba(188,156,74,0.09); transition:background 0.18s;}
+    .cart-popup .checkout-btn:hover { background:#222;}
+
+    footer { text-align:center; padding:24px 0; background-color:#222; color:white; font-family:'Montserrat', Arial, sans-serif; font-size:1em; position:relative; bottom:0; width:100%; letter-spacing:0.06em;}
+
+    /* Responsive */
+    @media (max-width:900px){#featured-products{flex-direction:column;align-items:center;}}
+    @media (max-width:600px){#featured-products,.cart-popup,.info-section,.newsletter-section{padding:8px;}.product{max-width:98vw;}.cart-popup{width:96vw;}}
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Zenscents</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+      </ul>
+    </nav>
+    <div class="cart-icon" onclick="toggleCartPopup()" title="View Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6h15l-1.5 9h-12l-1.5-9z" stroke="currentColor" stroke-width="1.1"/><circle cx="9" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/><circle cx="18" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/></svg>
+      <span class="cart-count" id="cart-count">0</span>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section id="hero-section">
+    <div class="hero-text">
+      <h2>Fresh Scents for Your Home</h2>
+      <p>Inspired by Gen Z Living.<br>Elevate your space with vibes and luxury aromas.</p>
+      <a href="shop.html" class="btn">Shop Now</a>
+    </div>
+    <div class="banner-scroll">
+      <span class="scroll-text">
+        Fresh Scents • Shop Diffusers • Modern Luxury • Gen Z Inspired • Zenscents • Room Fragrance • Shop Now •
+      </span>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section id="featured-products">
+    <div class="product">
+      <img src="images/red-apple-diffuser.jpg" alt="Red Apple Diffuser">
+      <h3>Red Apple Diffuser</h3>
+      <p>R199</p>
+      <button onclick="addToCart('Red Apple Diffuser', 199, 'images/red-apple-diffuser.jpg')">Add to Cart</button>
+      <a href="Red Apple Diffuser.html"><button>View Product</button></a>
+    </div>
+    <div class="product">
+      <img src="images/jasmine-diffuser.jpg" alt="Jasmine Diffuser">
+      <h3>Jasmine Diffuser</h3>
+      <p>R199</p>
+      <button onclick="addToCart('Jasmine Diffuser', 199, 'images/jasmine-diffuser.jpg')">Add to Cart</button>
+      <a href="Jasmine Diffuser.html"><button>View Product</button></a>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="info-section">
+    <h3>Why Zenscents?</h3>
+    <p>We believe every home deserves to feel fresh, vibrant, and uniquely you. Our scents are crafted for the bold and creative, bringing a touch of luxury to everyday living.</p>
+    <ul>
+      <li>Premium, long-lasting fragrances</li>
+      <li>Modern designs perfect for any room</li>
+      <li>Locally made, eco-friendly packaging</li>
+      <li>Inspired by Gen Z style & energy</li>
+    </ul>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter-section">
+    <h4>Stay Up to Date & Get Exclusive Offers</h4>
+    <form onsubmit="subscribeNewsletter(event)">
+      <input type="email" placeholder="Your email address" required id="newsletter-email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <div id="newsletter-message" style="margin-top:10px;color:#bc9c4a;"></div>
+  </section>
+
+  <!-- Cart Popup -->
+  <div id="cart-popup" class="cart-popup">
+    <h3>Your Cart</h3>
+    <ul id="cart-items"></ul>
+    <div class="cart-total" id="cart-total"></div>
+    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Zenscents. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function addToCart(name, price, imgSrc) {
+      let existing = cart.find(item => item.name === name);
+      if (existing) { existing.quantity += 1; } 
+      else { cart.push({ name, price, imgSrc, quantity: 1 }); }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      updateCartPopup();
+    }
+
+    function removeFromCart(index) { cart.splice(index,1); localStorage.setItem('cart', JSON.stringify(cart)); updateCartCount(); updateCartPopup(); }
+    function increaseQuantity(index) { cart[index].quantity += 1; localStorage.setItem('cart', JSON.stringify(cart)); updateCartCount(); updateCartPopup(); }
+    function decreaseQuantity(index) { if(cart[index].quantity>1){cart[index].quantity-=1;} else{removeFromCart(index);return;} localStorage.setItem('cart', JSON.stringify(cart)); updateCartCount(); updateCartPopup(); }
+
+    function updateCartCount() { document.getElementById('cart-count').innerText = cart.reduce((total,item)=>total+item.quantity,0); }
+    function updateCartPopup() {
+      let cartItems = document.getElementById('cart-items'); cartItems.innerHTML='';
+      let total=0;
+      if(cart.length===0){cartItems.innerHTML='<li style="text-align:center;color:#aaa;">Your cart is empty.</li>';}
+      cart.forEach((item,index)=>{ total+=item.price*item.quantity;
+        let li=document.createElement('li'); li.innerHTML=`<img src="${item.imgSrc}" class="product-img" alt="${item.name}">
+          <div class="product-details">
+            <span class="product-name">${item.name}</span>
+            <div class="product-price">R${item.price} x ${item.quantity}</div>
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+              <span>${item.quantity}</span>
+              <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+              <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+            </div>
+          </div>`;
+        cartItems.appendChild(li);
+      });
+      document.getElementById('cart-total').innerText=cart.length ? "Total: R"+total.toFixed(2) : "";
+    }
+
+    function toggleCartPopup() { let popup=document.getElementById('cart-popup'); popup.style.display=popup.style.display==='block'?'none':'block'; if(popup.style.display==='block') updateCartPopup(); }
+    function checkout(){window.location.href='checkout.html';}
+    function subscribeNewsletter(event){ event.preventDefault(); const email=document.getElementById('newsletter-email').value; if(email){ document.getElementById('newsletter-message').innerText="Thank you for subscribing!"; document.getElementById('newsletter-email').value="";} }
+
+    updateCartCount();
+  </script>
+</body>
+</html>
