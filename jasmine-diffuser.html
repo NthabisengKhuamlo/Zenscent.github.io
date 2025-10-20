@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-    <title>Zenscents | Home</title>
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTR7BNSGK5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-KTR7BNSGK5');
-    </script>  
-</head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Jasmine Diffuser - A Floral and Elegant Aroma">
@@ -19,6 +9,7 @@
     <title>Jasmine Diffuser | Zenscents</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* ---------- GENERAL ---------- */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -26,6 +17,18 @@
             background-color: #f5f5f5;
             color: #333;
         }
+        h1, h2, h3 {
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button {
+            cursor: pointer;
+        }
+
+        /* ---------- HEADER ---------- */
         header {
             background-color: #222;
             color: white;
@@ -43,7 +46,6 @@
             border-radius: 50%;
             color: white;
             transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 2px 8px rgba(44,37,29,0.08);
             display: flex;
             align-items: center;
             gap: 6px;
@@ -51,7 +53,6 @@
         .cart-icon svg {
             width: 1.7em;
             height: 1.7em;
-            vertical-align: middle;
             stroke-width: 1.1;
         }
         .cart-icon:hover {
@@ -65,11 +66,12 @@
             font-size: 1em;
             border-radius: 50%;
             padding: 2px 8px;
-            margin-left: 2px;
             min-width: 18px;
             text-align: center;
             box-shadow: 0 1px 4px rgba(44,37,29,0.09);
         }
+
+        /* ---------- CART POPUP ---------- */
         .cart-popup {
             position: fixed;
             top: 70px;
@@ -85,13 +87,11 @@
         }
         .cart-popup h3 {
             color: #bc9c4a;
-            margin-top: 0;
-            font-size: 1.13em;
             margin-bottom: 12px;
-            letter-spacing: 0.03em;
+            font-size: 1.13em;
         }
         .cart-popup ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
             margin: 0;
             max-height: 210px;
@@ -110,7 +110,6 @@
             height: 48px;
             border-radius: 9px;
             object-fit: cover;
-            margin-right: 0;
             box-shadow: 0 1px 4px rgba(44,37,29,0.09);
         }
         .cart-popup .product-details {
@@ -137,8 +136,8 @@
             color: #fff;
             border: none;
             border-radius: 7px;
-            font-size: 1.08em;
-            padding: 2px 10px;
+            font-size: 1em;
+            padding: 2px 8px;
             cursor: pointer;
             transition: background 0.15s;
         }
@@ -151,9 +150,8 @@
             border: 1.5px solid #d95555;
             border-radius: 7px;
             font-size: 0.95em;
-            padding: 2px 10px;
+            padding: 2px 8px;
             cursor: pointer;
-            margin-left: 6px;
         }
         .cart-popup .remove-btn:hover {
             background: #d95555;
@@ -178,88 +176,69 @@
             font-weight: 600;
             letter-spacing: 0.02em;
             margin-top: 16px;
-            margin-bottom: 4px;
             box-shadow: 0 1px 4px rgba(188,156,74,0.09);
             transition: background 0.18s;
         }
         .cart-popup .checkout-btn:hover {
             background: #222;
         }
+
+        /* ---------- PRODUCT DETAIL ---------- */
         .product-detail {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             flex-wrap: wrap;
             padding: 50px;
+            gap: 30px;
+            background: #fff;
+            max-width: 1000px;
+            margin: 40px auto;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(44,37,29,0.07);
         }
         .product-detail img {
-            width: 250px;
-            margin-right: 20px;
+            width: 300px;
+            border-radius: 12px;
         }
         .product-info {
             max-width: 500px;
         }
         .product-info h2 {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
+            color: #222;
         }
+        .product-info .price {
+            font-size: 1.35em;
+            color: #bc9c4a;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .product-info .stock {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .stock.in { background: #4CAF50; }
+        .stock.out { background: #d95555; }
         .product-info p {
             margin-bottom: 10px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
+            margin-top: 15px;
         }
         th, td {
             padding: 10px;
             text-align: left;
+            border: 1px solid #ccc;
         }
-        /* Lifestyle Gallery Section */
-        .lifestyle-section {
-            background: #fff;
-            border-radius: 16px;
-            max-width: 900px;
-            margin: 40px auto 20px auto;
-            padding: 24px 16px 28px 16px;
-            box-shadow: 0 2px 12px rgba(44,37,29,0.07);
-        }
-        .lifestyle-title {
-            font-size: 1.35em;
-            color: #bc9c4a;
-            text-align: center;
-            margin-bottom: 18px;
-            letter-spacing: 0.03em;
-        }
-        .lifestyle-gallery {
-            display: flex;
-            gap: 22px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .lifestyle-img-card {
-            background: #f5f5f5;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(44,37,29,0.07);
-            max-width: 240px;
-            text-align: center;
-            margin-bottom: 18px;
-        }
-        .lifestyle-img-card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            display: block;
-        }
-        .lifestyle-caption {
-            font-size: 0.98em;
-            color: #444;
-            padding: 10px 12px;
-            background: #fff;
-        }
+
+        /* ---------- ADD TO CART ---------- */
         .add-to-cart {
             background-color: black;
             color: white;
@@ -276,178 +255,253 @@
         .add-to-cart:hover {
             background-color: #444;
         }
+
+        /* ---------- LIFESTYLE GALLERY ---------- */
+        .lifestyle-section {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 900px;
+            margin: 40px auto 20px auto;
+            padding: 24px 16px 28px 16px;
+            box-shadow: 0 2px 12px rgba(44,37,29,0.07);
+        }
+        .lifestyle-title {
+            font-size: 1.35em;
+            color: #bc9c4a;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .lifestyle-gallery {
+            display: flex;
+            gap: 22px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .lifestyle-img-card {
+            background: #f5f5f5;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(44,37,29,0.07);
+            max-width: 240px;
+            text-align: center;
+            margin-bottom: 18px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .lifestyle-img-card:hover { transform: scale(1.05); }
+        .lifestyle-img-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        .lifestyle-caption {
+            font-size: 0.98em;
+            color: #444;
+            padding: 10px 12px;
+            background: #fff;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            text-align: center;
+            padding: 18px 0;
+            background: #222;
+            color: white;
+            margin-top: 40px;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 900px) {
             .lifestyle-gallery { flex-direction: column; align-items: center; }
         }
         @media (max-width: 600px) {
-            .product-detail { flex-direction: column; padding: 10px; }
-            .product-detail img { margin-right: 0; margin-bottom: 20px; }
-            .lifestyle-section { padding: 12px 4px; }
+            .product-detail { flex-direction: column; padding: 20px; }
+            .product-detail img { margin-bottom: 20px; }
+            .lifestyle-section { padding: 12px 8px; }
+        }
+
+        /* ---------- ADD-TO-CART FEEDBACK ---------- */
+        .added-feedback {
+            display: inline-block;
+            margin-left: 10px;
+            color: #bc9c4a;
+            font-weight: 600;
+            animation: fadeOut 2s forwards;
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Jasmine Diffuser</h1>
-        <div class="cart-icon" onclick="toggleCartPopup()" title="View Cart">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M6 6h15l-1.5 9h-12l-1.5-9z" stroke="currentColor" stroke-width="1.1"/>
-                <circle cx="9" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/>
-                <circle cx="18" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/>
-            </svg>
-            <span class="cart-count" id="cart-count">0</span>
-        </div>
-    </header>
 
-    <section class="product-detail">
-        <img src="images/jasmine-diffuser.jpg" alt="Jasmine Diffuser">
-        <div class="product-info">
-            <h2>R199 - Floral and Elegant</h2>
-            <p><strong>Best for:</strong> Bedroom, living room, or bathroom for a calming floral aroma.</p>
-            <p><strong>Ingredients:</strong> Jasmine, Rose, Sandalwood.</p>
-            <p><strong>Stock:</strong> 20 in stock</p>
-            <p><strong>Where to Use:</strong> Ideal for creating a peaceful ambiance in your bedroom, bathroom, or living room.</p>
-            <table>
-                <tr>
-                    <th>Ingredient</th>
-                    <th>Size</th>
-                    <th>What's in the Box</th>
-                </tr>
-                <tr>
-                    <td>Jasmine, Rose, Sandalwood</td>
-                    <td>230ml</td>
-                    <td>1 Diffuser, 1 Bottle of Fragrance Oil, 5 Reeds</td>
-                </tr>
-            </table>
-            <button class="add-to-cart" onclick="addToCart('Jasmine Diffuser', 199, 'images/jasmine-diffuser.jpg')">Add to Cart</button>
-        </div>
-    </section>
-
-    <!-- Lifestyle Gallery Section -->
-    <section class="lifestyle-section">
-        <h2 class="lifestyle-title">See the Jasmine Diffuser in Real Life</h2>
-        <div class="lifestyle-gallery">
-            <div class="lifestyle-img-card">
-                <img src="images/lifestyle1.jpg" alt="Diffuser beside a bed">
-                <div class="lifestyle-caption">Create a calming bedtime vibe.</div>
-            </div>
-            <div class="lifestyle-img-card">
-                <img src="images/lifestyle2.jpg" alt="Diffuser in a bathroom spa">
-                <div class="lifestyle-caption">Transform bath time into a floral spa.</div>
-            </div>
-            <div class="lifestyle-img-card">
-                <img src="images/lifestyle3.jpg" alt="Diffuser in a living room">
-                <div class="lifestyle-caption">Fill your lounge with elegant notes.</div>
-            </div>
-            <!-- Add more lifestyle image cards as needed -->
-        </div>
-    </section>
-
-    <div id="cart-popup" class="cart-popup">
-        <h3>Your Cart</h3>
-        <ul id="cart-items">
-            <!-- Cart items will appear here -->
-        </ul>
-        <div class="cart-total" id="cart-total"></div>
-        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+<header>
+    <h1>Jasmine Diffuser</h1>
+    <div class="cart-icon" id="cart-icon" title="View Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M6 6h15l-1.5 9h-12l-1.5-9z" stroke="currentColor" stroke-width="1.1"/>
+            <circle cx="9" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/>
+            <circle cx="18" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/>
+        </svg>
+        <span class="cart-count" id="cart-count">0</span>
     </div>
-    <footer>
-        <p>&copy; 2025 Zenscents. All Rights Reserved.</p>
-    </footer>
-    <script>
-        // Cart structure
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+</header>
 
-        // Add item to cart (with image)
-        function addToCart(name, price, imgSrc) {
+<section class="product-detail">
+    <img src="images/jasmine-diffuser.jpg" alt="Jasmine Diffuser">
+    <div class="product-info">
+        <h2>Jasmine Diffuser</h2>
+        <div class="price">R199</div>
+        <span class="stock in">In Stock: 20</span>
+        <p><strong>Best for:</strong> Bedroom, living room, or bathroom for a calming floral aroma.</p>
+        <p><strong>Ingredients:</strong> Jasmine, Rose, Sandalwood.</p>
+        <p><strong>Where to Use:</strong> Ideal for creating a peaceful ambiance in your bedroom, bathroom, or living room.</p>
+        <table>
+            <tr>
+                <th>Ingredient</th>
+                <th>Size</th>
+                <th>What's in the Box</th>
+            </tr>
+            <tr>
+                <td>Jasmine, Rose, Sandalwood</td>
+                <td>230ml</td>
+                <td>1 Diffuser, 1 Bottle of Fragrance Oil, 5 Reeds</td>
+            </tr>
+        </table>
+        <button class="add-to-cart" data-name="Jasmine Diffuser" data-price="199" data-img="images/jasmine-diffuser.jpg">Add to Cart</button>
+        <span class="added-feedback" id="feedback"></span>
+    </div>
+</section>
+
+<section class="lifestyle-section">
+    <h2 class="lifestyle-title">See the Jasmine Diffuser in Real Life</h2>
+    <div class="lifestyle-gallery">
+        <div class="lifestyle-img-card">
+            <img src="images/lifestyle1.jpg" alt="Diffuser beside a bed">
+            <div class="lifestyle-caption">Create a calming bedtime vibe.</div>
+        </div>
+        <div class="lifestyle-img-card">
+            <img src="images/lifestyle2.jpg" alt="Diffuser in a bathroom spa">
+            <div class="lifestyle-caption">Transform bath time into a floral spa.</div>
+        </div>
+        <div class="lifestyle-img-card">
+            <img src="images/lifestyle3.jpg" alt="Diffuser in a living room">
+            <div class="lifestyle-caption">Fill your lounge with elegant notes.</div>
+        </div>
+    </div>
+</section>
+
+<div id="cart-popup" class="cart-popup">
+    <h3>Your Cart</h3>
+    <ul id="cart-items"></ul>
+    <div class="cart-total" id="cart-total"></div>
+    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+</div>
+
+<footer>
+    <p>&copy; 2025 Zenscents. All Rights Reserved.</p>
+</footer>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const cartCountEl = document.getElementById('cart-count');
+    const cartPopup = document.getElementById('cart-popup');
+    const cartItemsEl = document.getElementById('cart-items');
+    const cartIcon = document.getElementById('cart-icon');
+    const feedback = document.getElementById('feedback');
+
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartPopup();
+    }
+
+    function updateCartCount() {
+        let total = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCountEl.innerText = total;
+    }
+
+    function updateCartPopup() {
+        cartItemsEl.innerHTML = '';
+        let total = 0;
+        if(cart.length === 0){
+            cartItemsEl.innerHTML = '<li style="text-align:center;color:#aaa;">Your cart is empty.</li>';
+            document.getElementById('cart-total').innerText = '';
+            return;
+        }
+        cart.forEach(item => {
+            total += item.price * item.quantity;
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <img src="${item.img}" class="product-img" alt="${item.name}">
+                <div class="product-details">
+                    <span class="product-name">${item.name}</span>
+                    <div class="product-price">R${item.price} x ${item.quantity}</div>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" data-action="decrease" data-id="${item.id}">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn" data-action="increase" data-id="${item.id}">+</button>
+                        <button class="remove-btn" data-action="remove" data-id="${item.id}">Remove</button>
+                    </div>
+                </div>`;
+            cartItemsEl.appendChild(li);
+        });
+        document.getElementById('cart-total').innerText = "Total: R" + total.toFixed(2);
+    }
+
+    function toggleCartPopup() {
+        cartPopup.style.display = cartPopup.style.display === 'block' ? 'none' : 'block';
+    }
+
+    cartIcon.addEventListener('click', toggleCartPopup);
+
+    // Add to cart
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const name = btn.dataset.name;
+            const price = parseFloat(btn.dataset.price);
+            const img = btn.dataset.img;
             let existing = cart.find(item => item.name === name);
-            if (existing) {
+            if(existing){
                 existing.quantity += 1;
             } else {
-                cart.push({ name, price, imgSrc, quantity: 1 });
+                cart.push({id: Date.now(), name, price, img, quantity:1});
             }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            updateCartPopup();
-        }
+            saveCart();
+            feedback.innerText = "Added!";
+            setTimeout(()=>{ feedback.innerText=''; },1500);
+        });
+    });
 
-        // Remove item from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            updateCartPopup();
-        }
+    // Event delegation for cart popup buttons
+    cartItemsEl.addEventListener('click', e => {
+        if(e.target.tagName === 'BUTTON'){
+            const action = e.target.dataset.action;
+            const id = parseInt(e.target.dataset.id);
+            const index = cart.findIndex(item => item.id === id);
+            if(index === -1) return;
 
-        // Increase quantity
-        function increaseQuantity(index) {
-            cart[index].quantity += 1;
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            updateCartPopup();
-        }
-
-        // Decrease quantity
-        function decreaseQuantity(index) {
-            if (cart[index].quantity > 1) {
-                cart[index].quantity -= 1;
-            } else {
-                removeFromCart(index);
-                return;
+            if(action === 'increase') cart[index].quantity +=1;
+            if(action === 'decrease'){
+                if(cart[index].quantity >1) cart[index].quantity -=1;
+                else cart.splice(index,1);
             }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            updateCartPopup();
-        }
+            if(action === 'remove') cart.splice(index,1);
 
-        // Update cart count (shows total items)
-        function updateCartCount() {
-            let cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-            document.getElementById('cart-count').innerText = cartCount;
+            saveCart();
         }
+    });
 
-        // Update cart popup with breakdown
-        function updateCartPopup() {
-            let cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = '';
-            let total = 0;
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<li style="text-align:center;color:#aaa;">Your cart is empty.</li>';
-            }
-            cart.forEach((item, index) => {
-                total += item.price * item.quantity;
-                let li = document.createElement('li');
-                li.innerHTML = `<img src="${item.imgSrc}" class="product-img" alt="${item.name}">
-                    <div class="product-details">
-                        <span class="product-name">${item.name}</span>
-                        <div class="product-price">R${item.price} x ${item.quantity}</div>
-                        <div class="quantity-controls">
-                            <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
-                            <span>${item.quantity}</span>
-                            <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
-                            <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
-                        </div>
-                    </div>`;
-                cartItems.appendChild(li);
-            });
-            document.getElementById('cart-total').innerText = cart.length ? "Total: R" + total.toFixed(2) : "";
-        }
+    function checkout() {
+        window.location.href = 'checkout.html';
+    }
 
-        // Show/hide cart popup
-        function toggleCartPopup() {
-            let popup = document.getElementById('cart-popup');
-            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-            if (popup.style.display === 'block') updateCartPopup();
-        }
+    // Initialize
+    updateCartCount();
+    updateCartPopup();
+</script>
 
-        // Proceed to checkout
-        function checkout() {
-            window.location.href = 'checkout.html';
-        }
-
-        // Update cart count when page loads
-        updateCartCount();
-    </script>
 </body>
 </html>
-
