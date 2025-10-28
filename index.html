@@ -154,15 +154,19 @@
     </ul>
   </section>
 
-  <!-- Newsletter -->
-  <section class="newsletter-section">
-    <h4>Stay Up to Date & Get Exclusive Offers</h4>
-    <form onsubmit="subscribeNewsletter(event)">
-      <input type="email" placeholder="Your email address" required id="newsletter-email">
-      <button type="submit">Subscribe</button>
-    </form>
-    <div id="newsletter-message" style="margin-top:10px;color:#bc9c4a;"></div>
-  </section>
+ <!-- Newsletter -->
+<section class="newsletter-section">
+  <h4>Stay Up to Date & Get Exclusive Offers</h4>
+  <form name="newsletter" method="POST" data-netlify="true" action="/thank-you.html">
+    <!-- Hidden input required by Netlify -->
+    <input type="hidden" name="form-name" value="newsletter" />
+
+    <input type="email" name="email" placeholder="Your email address" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <div id="newsletter-message" style="margin-top:10px;color:#bc9c4a;"></div>
+</section>
+
 
   <!-- Cart Popup -->
   <div id="cart-popup" class="cart-popup">
@@ -224,4 +228,5 @@
   </script>
 </body>
 </html>
+
 
