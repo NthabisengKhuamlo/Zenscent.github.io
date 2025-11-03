@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Zenscents | Blue Ocean Diffuser</title>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTR7BNSGK5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -10,11 +12,34 @@
     gtag('js', new Date());
     gtag('config', 'G-KTR7BNSGK5');
   </script>  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Blue Ocean Diffuser - Refreshing Ocean Breeze Aroma">
   <meta name="keywords" content="Zenscents, Blue Ocean, Diffuser, Fragrance, Fresh, Ocean">
   <meta name="author" content="Nthabiseng Khumalo">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- JSON-LD for Google Review Stars -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Blue Ocean Diffuser",
+    "image": "https://zenscentsfragrances.netlify.app/images/blue-ocean-diffuser.jpg",
+    "description": "A fresh ocean-scented diffuser for your living room, bedroom, or office.",
+    "sku": "BO-001",
+    "brand": {
+      "@type": "Brand",
+      "name": "Zenscents"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "12"
+    }
+  }
+  </script>
+
   <style>
     /* Keep the same CSS as your Caramel Champagne Diffuser */
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; color: #333; }
@@ -61,15 +86,15 @@
 </head>
 <body>
   <header>
-      <h1>Blue Ocean Diffuser</h1>
-      <div class="cart-icon" onclick="toggleCartPopup()" title="View Cart">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M6 6h15l-1.5 9h-12l-1.5-9z" stroke="currentColor" stroke-width="1.1"/>
-              <circle cx="9" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/>
-              <circle cx="18" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/>
-          </svg>
-          <span class="cart-count" id="cart-count">0</span>
-      </div>
+    <h1>Blue Ocean Diffuser</h1>
+    <div class="cart-icon" onclick="toggleCartPopup()" title="View Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M6 6h15l-1.5 9h-12l-1.5-9z" stroke="currentColor" stroke-width="1.1"/>
+            <circle cx="9" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/>
+            <circle cx="18" cy="21" r="1.1" stroke="currentColor" stroke-width="1.1"/>
+        </svg>
+        <span class="cart-count" id="cart-count">0</span>
+    </div>
   </header>
 
   <section class="product-detail">
@@ -120,7 +145,7 @@
       <div class="cart-total" id="cart-total"></div>
       <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
   </div>
-  
+
   <footer>
       <p>&copy; 2025 Zenscents. All Rights Reserved.</p>
   </footer>
