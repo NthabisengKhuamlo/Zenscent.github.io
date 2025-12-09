@@ -509,78 +509,141 @@
         </div>
 
         <!-- Zenscents Tab Content -->
-        <div id="zenscents" class="tab-content">
-            <h2 style="font-family: 'Playfair Display', serif; color: #bc9c4a; margin-bottom: 30px;">Zenscents Growth Project</h2>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <div class="card-content">
-                        <div class="card-meta">Analytics & Strategy</div>
-                        <h3>Google Analytics Integration</h3>
-                        <p>Set up comprehensive tracking for user behavior, conversion funnels, and traffic sources. Monitoring key metrics to optimize marketing efforts and measure campaign effectiveness.</p>
-                        <a href="#" class="card-link">View Dashboard →</a>
-                    </div>
-                </div>
-
-                <!-- Hidden Dashboard Section (Expands on Click) -->
-<div id="ga-report" style="display:none; margin-top:20px;">
-    <iframe 
-        width="100%" 
-        height="450" 
-        src="https://lookerstudio.google.com/embed/reporting/424db8a5-b1da-4899-8e8e-70cad09556d8/page/1pJiF"
-        frameborder="0" 
-        style="border:0; border-radius:12px;" 
-        allowfullscreen 
-        sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-    </iframe>
-</div>
-                <div class="portfolio-card">
-                    <div class="card-content">
-                        <div class="card-meta">Content Planning</div>
-                        <h3>Social Media Calendar</h3>
-                        <p>Created 90-day content calendar with strategic posting schedule across Instagram, TikTok, and LinkedIn to build brand awareness and engage Gen Z audience.</p>
-                        <a href="#" class="card-link">View Calendar →</a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <div class="card-content">
-                        <div class="card-meta">Social Media</div>
-                        <h3>Instagram Campaign Strategy</h3>
-                        <p>Developed Gen Z-focused campaign featuring product styling tips, behind-the-scenes content, and user-generated content strategy to drive engagement.</p>
-                        <a href="#" class="card-link">View Campaign →</a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <div class="card-content">
-                        <div class="card-meta">Copywriting</div>
-                        <h3>Brand Voice & Messaging</h3>
-                        <p>Crafted authentic brand voice that resonates with Gen Z audience. Created product descriptions, email campaigns, and social copy that drives conversions.</p>
-                        <a href="#" class="card-link">View Examples →</a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <div class="card-content">
-                        <div class="card-meta">Campaign</div>
-                        <h3>Launch Campaign</h3>
-                        <p>End-to-end campaign planning for Zenscents launch including teaser content, influencer outreach strategy, and promotional offers to maximize initial impact.</p>
-                        <a href="#" class="card-link">View Campaign →</a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <div class="card-content">
-                        <div class="card-meta">Growth</div>
-                        <h3>Email Marketing Strategy</h3>
-                        <p>Built email nurture sequences for newsletter subscribers including welcome series, product education, and seasonal promotions to drive repeat purchases.</p>
-                        <a href="#" class="card-link">View Strategy →</a>
-                    </div>
-                </div>
+<div id="zenscents" class="tab-content">
+    <h2 style="font-family: 'Playfair Display', serif; color: #bc9c4a; margin-bottom: 30px;">Zenscents Growth Project</h2>
+    
+    <div class="portfolio-grid">
+        <!-- Google Analytics Card -->
+        <div class="portfolio-card analytics-card" onclick="toggleContent('ga-report')">
+            <div class="card-content">
+                <div class="card-meta">Analytics & Strategy</div>
+                <h3>Google Analytics Integration</h3>
+                <p>Set up comprehensive tracking for user behavior, conversion funnels, and traffic sources. Monitoring key metrics to optimize marketing efforts and measure campaign effectiveness.</p>
+                <span class="expand-text">Click to View Dashboard ↓</span>
             </div>
         </div>
+        <div id="ga-report" class="hidden-content">
+            <iframe 
+                width="100%" 
+                height="450" 
+                src="https://lookerstudio.google.com/embed/reporting/424db8a5-b1da-4899-8e8e-70cad09556d8/page/1pJiF"
+                frameborder="0" 
+                style="border:0; border-radius:12px;" 
+                allowfullscreen 
+                sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+            </iframe>
+        </div>
+
+        <!-- Social Media Calendar Card -->
+        <div class="portfolio-card calendar-card" onclick="toggleContent('calendar-report')">
+            <div class="card-content">
+                <div class="card-meta">Content Planning</div>
+                <h3>Social Media Calendar</h3>
+                <p>Created 90-day content calendar with strategic posting schedule across Instagram, TikTok, and LinkedIn to build brand awareness and engage Gen Z audience.</p>
+                <span class="expand-text">Click to View Calendar ↓</span>
+            </div>
+        </div>
+        <div id="calendar-report" class="hidden-content">
+            <iframe 
+                src="YOUR_CALENDAR_EMBED_LINK_HERE" 
+                width="100%" 
+                height="450" 
+                style="border:0; border-radius:12px;" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Instagram Campaign Strategy Card -->
+        <div class="portfolio-card campaign-card" onclick="toggleContent('campaign-report')">
+            <div class="card-content">
+                <div class="card-meta">Social Media</div>
+                <h3>Instagram Campaign Strategy</h3>
+                <p>Developed Gen Z-focused campaign featuring product styling tips, behind-the-scenes content, and user-generated content strategy to drive engagement.</p>
+                <span class="expand-text">Click to View Campaign ↓</span>
+            </div>
+        </div>
+        <div id="campaign-report" class="hidden-content">
+            <iframe 
+                src="YOUR_CAMPAIGN_EMBED_LINK_HERE" 
+                width="100%" 
+                height="450" 
+                style="border:0; border-radius:12px;" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Brand Voice & Messaging Card -->
+        <div class="portfolio-card copywriting-card" onclick="toggleContent('copywriting-report')">
+            <div class="card-content">
+                <div class="card-meta">Copywriting</div>
+                <h3>Brand Voice & Messaging</h3>
+                <p>Crafted authentic brand voice that resonates with Gen Z audience. Created product descriptions, email campaigns, and social copy that drives conversions.</p>
+                <span class="expand-text">Click to View Examples ↓</span>
+            </div>
+        </div>
+        <div id="copywriting-report" class="hidden-content">
+            <iframe 
+                src="YOUR_COPYWRITING_EMBED_LINK_HERE" 
+                width="100%" 
+                height="450" 
+                style="border:0; border-radius:12px;" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Launch Campaign Card -->
+        <div class="portfolio-card launch-card" onclick="toggleContent('launch-report')">
+            <div class="card-content">
+                <div class="card-meta">Campaign</div>
+                <h3>Launch Campaign</h3>
+                <p>End-to-end campaign planning for Zenscents launch including teaser content, influencer outreach strategy, and promotional offers to maximize initial impact.</p>
+                <span class="expand-text">Click to View Campaign ↓</span>
+            </div>
+        </div>
+        <div id="launch-report" class="hidden-content">
+            <iframe 
+                src="YOUR_LAUNCH_CAMPAIGN_EMBED_LINK_HERE" 
+                width="100%" 
+                height="450" 
+                style="border:0; border-radius:12px;" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Email Marketing Strategy Card -->
+        <div class="portfolio-card email-card" onclick="toggleContent('email-report')">
+            <div class="card-content">
+                <div class="card-meta">Growth</div>
+                <h3>Email Marketing Strategy</h3>
+                <p>Built email nurture sequences for newsletter subscribers including welcome series, product education, and seasonal promotions to drive repeat purchases.</p>
+                <span class="expand-text">Click to View Strategy ↓</span>
+            </div>
+        </div>
+        <div id="email-report" class="hidden-content">
+            <iframe 
+                src="YOUR_EMAIL_MARKETING_EMBED_LINK_HERE" 
+                width="100%" 
+                height="450" 
+                style="border:0; border-radius:12px;" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
     </div>
+</div>
+
+<!-- Add this JS for all expandable cards -->
+<script>
+function toggleContent(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
+}
+</script>
+
+<style>
+.hidden-content { display: none; margin-top: 20px; }
+.expand-text { font-size: 14px; color: #ef8354; font-weight: 600; display: inline-block; margin-top: 10px; }
+</style>
 
     <footer>
         <p>&copy; 2025 Zenscents. All Rights Reserved.</p>
@@ -620,5 +683,6 @@
 </body>
 
 </html>
+
 
 
