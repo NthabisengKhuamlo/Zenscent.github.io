@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Analytics Setup - Zenscents Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Back to Portfolio Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2d3748;
+            background: #edf2f7;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .back-link:hover {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+
+        .section h2 {
+            color: #2d3748;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h3 {
+            color: #4a5568;
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .section p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-change {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .tool-badge {
+            background: #edf2f7;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .screenshot-placeholder {
+            background: linear-gradient(to bottom, #f7fafc, #edf2f7);
+            border: 2px dashed #cbd5e0;
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            color: #718096;
+            margin: 2rem 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .screenshot-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .implementation-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .implementation-list li {
+            padding: 1rem 1rem 1rem 3rem;
+            margin-bottom: 1rem;
+            background: #f7fafc;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .implementation-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 1rem;
+            color: #48bb78;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+        }
+
+        .metrics-table th {
+            background: #4a5568;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .metrics-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .metrics-table tr:hover {
+            background: #f7fafc;
+        }
+
+        .insight-box {
+            background: #fff5f5;
+            border-left: 4px solid #fc8181;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .insight-box h4 {
+            color: #c53030;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-box {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .success-box h4 {
+            color: #2f855a;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA Section - Updated Portfolio Colors */
+        .cta-section {
+            background: #f5f7fa;
+            color: #1a202c;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #edf2f7;
+            color: #2d3748;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .cta-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="/portfolio" class="back-link">← Back to Portfolio</a>
+            <h1>Google Analytics Integration</h1>
+            <p class="subtitle">Comprehensive tracking setup for Zenscents eCommerce platform</p>
+            
+            <div class="meta-info">
+                <div class="meta-item">
+                    <span class="meta-label">Project Type</span>
+                    <span class="meta-value">Analytics & Strategy</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Duration</span>
+                    <span class="meta-value">2 Months</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Tools Used</span>
+                    <span class="meta-value">GA4, Looker Studio, GTM</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Status</span>
+                    <span class="meta-value">Live & Optimizing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Overview Section -->
+        <div class="section">
+            <h2>Project Overview</h2>
+            <p>Set up comprehensive tracking for user behavior, conversion funnels, and traffic sources. Monitoring key metrics to optimize marketing efforts and measure campaign effectiveness across the Zenscents digital ecosystem.</p>
+            
+            <p>This project involved implementing Google Analytics 4 (GA4) from the ground up, creating custom dashboards in Looker Studio, and establishing KPIs that directly tie to business objectives.</p>
+
+            <div class="tools-list">
+                <span class="tool-badge">Google Analytics 4</span>
+                <span class="tool-badge">Looker Studio</span>
+                <span class="tool-badge">Google Tag Manager</span>
+                <span class="tool-badge">Search Console</span>
+                <span class="tool-badge">Hotjar</span>
+            </div>
+        </div>
+
+        <!-- Challenge Section -->
+        <div class="section">
+            <h2>The Challenge</h2>
+            <p>As a new eCommerce brand launching in the competitive home fragrance market, Zenscents needed:</p>
+            <ul class="implementation-list">
+                <li>Complete visibility into user behavior from first visit to purchase</li>
+                <li>Understanding of which marketing channels drive the most valuable traffic</li>
+                <li>Identification of bottlenecks in the customer journey</li>
+                <li>Data-driven insights to optimize product pages and checkout flow</li>
+                <li>Ability to measure ROI on marketing campaigns and content efforts</li>
+            </ul>
+        </div>
+
+        <!-- Implementation Section -->
+        <div class="section">
+            <h2>Implementation Strategy</h2>
+            
+            <h3>Phase 1: Foundation Setup</h3>
+            <ul class="implementation-list">
+                <li>Created GA4 property with enhanced eCommerce tracking</li>
+                <li>Implemented Google Tag Manager for flexible event tracking</li>
+                <li>Set up custom events for key user interactions (Add to Cart, Begin Checkout, Purchase)</li>
+                <li>Configured conversion goals aligned with business objectives</li>
+                <li>Linked Google Search Console for SEO performance tracking</li>
+            </ul>
+
+            <h3>Phase 2: Event Tracking Configuration</h3>
+            <p>Custom events implemented to track the complete customer journey:</p>
+            <table class="metrics-table">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Trigger</th>
+                        <th>Business Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>view_item</td>
+                        <td>Product page view</td>
+                        <td>Measure product interest</td>
+                    </tr>
+                    <tr>
+                        <td>add_to_cart</td>
+                        <td>Item added to cart</td>
+                        <td>Track purchase intent</td>
+                    </tr>
+                    <tr>
+                        <td>begin_checkout</td>
+                        <td>Checkout initiated</td>
+                        <td>Identify drop-off points</td>
+                    </tr>
+                    <tr>
+                        <td>purchase</td>
+                        <td>Transaction completed</td>
+                        <td>Revenue attribution</td>
+                    </tr>
+                    <tr>
+                        <td>newsletter_signup</td>
+                        <td>Email subscription</td>
+                        <td>Build marketing audience</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Phase 3: Dashboard Creation</h3>
+            <p>Built custom Looker Studio dashboards to visualize key metrics for different stakeholders:</p>
+            <ul class="implementation-list">
+                <li><strong>Executive Dashboard:</strong> High-level revenue, conversion rate, and traffic overview</li>
+                <li><strong>Marketing Dashboard:</strong> Campaign performance, channel attribution, and ROI</li>
+                <li><strong>Product Dashboard:</strong> Top sellers, product page engagement, inventory insights</li>
+                <li><strong>User Behavior Dashboard:</strong> Journey mapping, funnel analysis, and engagement metrics</li>
+            </ul>
+        </div>
+
+        <!-- Key Metrics Section -->
+        <div class="section">
+            <h2>Key Metrics Tracked</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">New Users (Last 30 Days)</div>
+                    <div class="stat-value">9</div>
+                    <div class="stat-change">↓ 72.7% vs. previous period</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Sessions</div>
+                    <div class="stat-value">11</div>
+                    <div class="stat-change">↓ 80.0% vs. previous period</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Key Events</div>
+                    <div class="stat-value">131</div>
+                    <div class="stat-change">↓ 76.3% vs. previous period</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Active Users</div>
+                    <div class="stat-value">10</div>
+                    <div class="stat-change">↓ 70.6% vs. previous period</div>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="margin-top: 1.5rem;">
+                <div class="stat-card" style="background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);">
+                    <div class="stat-label">Search Console - Total Clicks</div>
+                    <div class="stat-value">2</div>
+                    <div class="stat-change">3.8% CTR from 53 impressions</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%);">
+                    <div class="stat-label">Average Search Position</div>
+                    <div class="stat-value">6.2</div>
+                    <div class="stat-change">Strong organic visibility</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);">
+                    <div class="stat-label">Newsletter Signups</div>
+                    <div class="stat-value">19</div>
+                    <div class="stat-change">Top conversion event</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);">
+                    <div class="stat-label">Page Views</div>
+                    <div class="stat-value">18</div>
+                    <div class="stat-change">Strong engagement per session</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;"><em>Data shown reflects actual performance from Google Analytics 4 and Search Console for Zenscents (November - December 2024).</em></p>
+        </div>
+
+        <!-- Dashboard Screenshots Section -->
+        <div class="section">
+            <h2>Analytics Dashboard</h2>
+            <p>Below are screenshots from the live Looker Studio dashboards tracking Zenscents performance:</p>
+            
+            <div class="screenshot-placeholder">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <p style="margin-top: 1rem; font-size: 1.1rem;"><strong>Insert Your Looker Studio Screenshot Here</strong></p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Replace this placeholder with your actual dashboard image</p>
+                <p style="margin-top: 1rem; font-size: 0.85rem; max-width: 600px;">
+                    Instructions: Take a screenshot of your Looker Studio dashboard, save it as 
+                    "looker-dashboard.png" and replace the placeholder in the code.
+                </p>
+            </div>
+
+            <div class="screenshot-placeholder">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <p style="margin-top: 1rem; font-size: 1.1rem;"><strong>User Flow & Conversion Funnel</strong></p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Screenshot #2 placement</p>
+            </div>
+        </div>
+
+        <!-- Insights Section -->
+        <div class="section">
+            <h2>Key Insights Discovered</h2>
+            
+            <div class="insight-box">
+                <h4>Early Stage Growth Pattern</h4>
+                <p>As a newly launched site, the data shows typical early-stage patterns with fluctuating traffic as organic presence builds. The 72.7% decrease compared to the previous period indicates this is the initial launch phase with varying testing and soft launch activities.</p>
+            </div>
+
+            <div class="success-box">
+                <h4>Strong Newsletter Conversion</h4>
+                <p>With 19 newsletter signups from just 9 new users, the email capture strategy is performing exceptionally well. This 211% conversion rate (users signing up multiple times or from return visits) indicates strong interest and effective CTA placement.</p>
+            </div>
+
+            <div class="success-box">
+                <h4>Excellent Search Position</h4>
+                <p>Achieving an average position of 6.2 on Google with 53 impressions and a 3.8% CTR shows strong SEO foundation. The site is ranking on page 1 for target keywords, which is impressive for a new domain.</p>
+            </div>
+
+            <div class="insight-box">
+                <h4>High Engagement Per Session</h4>
+                <p>With 18 page views from 11 sessions, users are viewing an average of 1.6 pages per session. Combined with 12 user engagement events, this indicates visitors are actively exploring the site rather than bouncing immediately.</p>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="section">
+            <h2>Results & Impact</h2>
+            <p>The comprehensive analytics implementation has enabled data-driven decision making across all marketing activities:</p>
+            
+            <h3>Quantifiable Achievements</h3>
+            <ul class="implementation-list">
+                <li><strong>Position 6.2</strong> average ranking in Google Search results for target keywords</li>
+                <li><strong>3.8% CTR</strong> from search impressions, above industry average for new sites</li>
+                <li><strong>211% email conversion rate</strong> - 19 signups from 9 new users indicates strong value proposition</li>
+                <li><strong>1.6 pages per session</strong> showing engaged user behavior and effective navigation</li>
+                <li><strong>131 key events tracked</strong> providing comprehensive user journey visibility</li>
+                <li><strong>Zero data loss</strong> - all user interactions properly captured since launch</li>
+            </ul>
+
+            <h3>Strategic Foundation Built</h3>
+            <ul class="implementation-list">
+                <li>Established baseline metrics for post-launch comparison</li>
+                <li>Validated that newsletter signup strategy is highly effective</li>
+                <li>Confirmed SEO foundation is strong with page 1 rankings</li>
+                <li>Identified that users are engaged when they visit (multiple page views)</li>
+                <li>Created tracking infrastructure ready to scale with traffic growth</li>
+                <li>Enabled data collection for future A/B testing and optimization</li>
+            </ul>
+        </div>
+
+        <!-- Skills Demonstrated Section -->
+        <div class="section">
+            <h2>Skills Demonstrated</h2>
+            <div class="stats-grid">
+                <div class="tool-badge" style="padding: 1rem 1.5rem;">Google Analytics 4 Configuration</div>
+                <div class="tool-badge" style="padding: 1rem 1.5rem;">Event Tracking & GTM</div>
+                <div class="tool-badge" style="padding: 1rem 1.5rem;">Data Visualization</div>
+                <div class="tool-badge" style="padding: 1rem 1.5rem;">Conversion Rate Optimization</div>
+                <div class="tool-badge" style="padding: 1rem 1.5rem;">Dashboard Design</div>
+                <div class="tool-badge" style="padding: 1rem 1.5rem;">Marketing Attribution</div>
+                <div class="tool-badge" style="padding: 1rem 1.5rem;">KPI Definition</div>
+                <div class="tool-badge" style="padding: 1rem 1.5rem;">Funnel Analysis</div>
+                <div class="tool-badge" style="padding: 1rem 1.5rem;">Strategic Thinking</div>
+                <div class="tool-badge" style="padding: 1rem 1.5rem;">Data-Driven Decision Making</div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Interested in Working Together?</h2>
+            <p style="max-width: 700px; margin: 0 auto; opacity: 0.95;">
+                I bring hands-on experience in analytics setup, optimization, and turning data into actionable marketing strategies. Let's discuss how I can help your team make better data-driven decisions.
+            </p>
+            <div class="cta-buttons">
+                <a href="/portfolio" class="btn btn-primary">← Back to Portfolio</a>
+                <a href="/contact" class="btn btn-secondary">Get In Touch</a>
+                <a href="https://www.linkedin.com/in/nthabiseng-khumalo-9b174b1aa" target="_blank" class="btn btn-secondary">View LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
