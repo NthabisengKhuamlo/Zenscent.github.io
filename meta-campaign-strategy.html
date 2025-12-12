@@ -1,165 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meta Campaign Strategy | Portfolio</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Campaign Strategy - Zenscents Portfolio</title>
     <style>
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #7E57C2, #AB47BC);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Layout */
-        body {
-            font-family: "Inter", sans-serif;
-            background: #fafafa;
-            margin: 0;
-        }
-        .section {
-            max-width: 900px;
-            margin: 3rem auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #444;
-        }
-        p, li {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #555;
-        }
-
-        /* Placeholder Box */
-        .placeholder-box {
-            border: 2px dashed #c9c9c9;
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            margin-top: 1rem;
-            background: #fdfdfd;
-        }
-
-        /* Buttons */
-        .back-btn {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 0.9rem 2rem;
-            background: #7E57C2; /* portfolio purple */
-            color: white;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-        .back-btn:hover {
-            opacity: 0.85;
-        }
-
-        /* CTA */
-        .cta-section {
-            margin-top: 4rem;
-            text-align: center;
-            padding: 3rem;
-            background: #7E57C2; /* portfolio purple */
-            color: white;
-            border-radius: 16px;
-        }
+        * {margin:0; padding:0; box-sizing:border-box;}
+        body {font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.6; color:#333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height:100vh;}
+        .header {background:white; padding:2rem 0; box-shadow:0 2px 10px rgba(0,0,0,0.1); margin-bottom:3rem;}
+        .container {max-width:1200px; margin:0 auto; padding:0 2rem;}
+        .back-link {display:inline-flex; align-items:center; gap:0.5rem; color:#2d3748; background:#edf2f7; padding:0.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:500; margin-bottom:1rem; transition:0.3s;}
+        .back-link:hover {opacity:0.8;}
+        h1 {font-size:2.5rem; color:#2d3748; margin-bottom:0.5rem;}
+        .subtitle {color:#718096; font-size:1.1rem; margin-bottom:2rem;}
+        .meta-info {display:flex; gap:2rem; flex-wrap:wrap; margin-bottom:2rem; padding-bottom:2rem; border-bottom:2px solid #e2e8f0;}
+        .meta-item {display:flex; flex-direction:column;}
+        .meta-label {font-size:0.85rem; color:#718096; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.25rem;}
+        .meta-value {font-weight:600; color:#2d3748;}
+        .section {background:white; border-radius:12px; padding:2.5rem; margin-bottom:2rem; box-shadow:0 4px 6px rgba(0,0,0,0.07);}
+        .section h2 {color:#2d3748; font-size:1.75rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;}
+        .section h3 {color:#4a5568; font-size:1.3rem; margin:2rem 0 1rem;}
+        .section p {color:#4a5568; margin-bottom:1rem; line-height:1.8;}
+        .tools-list {display:flex; flex-wrap:wrap; gap:1rem; margin:1.5rem 0;}
+        .tool-badge {background:#edf2f7; padding:0.5rem 1rem; border-radius:20px; font-size:0.9rem; font-weight:500; color:#4a5568; display:flex; align-items:center; gap:0.5rem;}
+        .screenshot-placeholder {background:linear-gradient(to bottom, #f7fafc, #edf2f7); border:2px dashed #cbd5e0; border-radius:8px; padding:3rem; text-align:center; color:#718096; margin:2rem 0; min-height:400px; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+        .screenshot-placeholder img {max-width:100%; height:auto; border-radius:8px;}
+        .implementation-list {list-style:none; margin:1.5rem 0;}
+        .implementation-list li {padding:1rem 1rem 1rem 3rem; margin-bottom:1rem; background:#f7fafc; border-radius:8px; position:relative;}
+        .implementation-list li:before {content:"✓"; position:absolute; left:1rem; color:#48bb78; font-weight:bold; font-size:1.2rem;}
+        .cta-section {background:#f5f7fa; color:#1a202c; padding:3rem; border-radius:12px; text-align:center; margin-top:3rem;}
+        .cta-section h2 {color:#1a202c; margin-bottom:1rem;}
+        .cta-buttons {display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2rem;}
+        .btn {padding:1rem 2rem; border-radius:8px; text-decoration:none; font-weight:600; transition:transform 0.3s, box-shadow 0.3s; display:inline-block;}
+        .btn-primary {background:#edf2f7; color:#2d3748;}
+        .btn-secondary {background:rgba(255,255,255,0.2); color:#667eea; border:2px solid #667eea;}
+        .btn:hover {transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+        @media (max-width:768px){h1{font-size:2rem;} .section{padding:1.5rem;} .cta-section{padding:2rem 1.5rem;}}
     </style>
 </head>
-
 <body>
-
-    <!-- HERO -->
-    <section class="hero">
-        <h1>Meta Campaign Strategy</h1>
-        <p>Strategic campaign development for Instagram + Facebook to drive engagement & reach Gen Z audiences.</p>
-    </section>
-
-    <!-- OVERVIEW -->
-    <div class="section">
-        <h2>Campaign Objective</h2>
-        <p>
-            Build an engaging Meta campaign designed to increase brand awareness, spark user interaction, and 
-            showcase the product experience in an authentic, Gen Z-friendly way. The strategy focuses on 
-            short-form content, engagement hooks, and modern visual aesthetics.
-        </p>
-    </div>
-
-    <!-- STRATEGY BREAKDOWN -->
-    <div class="section">
-        <h2>Key Strategic Pillars</h2>
-        <ul>
-            <li><strong>Short-form Reels-first storytelling</strong> to match platform trends.</li>
-            <li><strong>Behind-the-scenes product moments</strong> showcasing texture, scent & usage.</li>
-            <li><strong>UGC-style content</strong> to boost trust and organic engagement.</li>
-            <li><strong>Inbound aesthetic visuals</strong> to match Gen Z moodboard energy.</li>
-            <li><strong>Weekly carousel series</strong> for education + storytelling.</li>
-            <li><strong>Optimized posting schedule</strong> based on insights & peak engagement times.</li>
-        </ul>
-    </div>
-
-    <!-- CONTENT TYPES -->
-    <div class="section">
-        <h2>Content Types Used</h2>
-        <ul>
-            <li>Instagram Reels + TikTok-style edits</li>
-            <li>Carousels with hooks and CTAs</li>
-            <li>Aesthetic product photography</li>
-            <li>Behind-the-scenes videos</li>
-            <li>Interactive Stories (polls, questions, quizzes)</li>
-        </ul>
-    </div>
-
-    <!-- PLACEHOLDER FOR CREATIVE MOCKUPS -->
-    <div class="section">
-        <h2>Campaign Creatives</h2>
-
-        <div class="placeholder-box">
-            <strong>Upload Meta Ad Creatives</strong>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">(reels, carousels, mockups, story designs)</p>
-            <p style="margin-top: 1rem; font-size: 1.1rem;"><strong>meta-creatives.jpg</strong></p>
-            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
-                Replace this placeholder by uploading your creative previews, named:
-                <br><strong>meta-creatives.jpg / .png</strong>.
-            </p>
+    <div class="header">
+        <div class="container">
+            <a href="/portfolio" class="back-link">← Back to Portfolio</a>
+            <h1>Meta Campaign Strategy</h1>
+            <p class="subtitle">Gen Z-focused Instagram & Facebook Campaign to Drive Engagement</p>
+            
+            <div class="meta-info">
+                <div class="meta-item">
+                    <span class="meta-label">Project Type</span>
+                    <span class="meta-value">Social Media / Meta Strategy</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Duration</span>
+                    <span class="meta-value">2 Months</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Platforms</span>
+                    <span class="meta-value">Instagram, Facebook, Meta Ads</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Status</span>
+                    <span class="meta-value">Live & Optimizing</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- PERFORMANCE -->
-    <div class="section">
-        <h2>Performance Summary</h2>
-        <ul>
-            <li>Increased engagement rate by **X%**</li>
-            <li>Generated **X new followers**</li>
-            <li>Achieved **X% video view-through rate**</li>
-            (You will fill these values when you have final data.)
-        </ul>
-    </div>
+    <div class="container">
+        <div class="section">
+            <h2>Campaign Overview</h2>
+            <p>Developed a Gen Z-focused campaign featuring product styling tips, behind-the-scenes content, and user-generated content strategy to drive engagement across Instagram and Facebook.</p>
+            <div class="tools-list">
+                <span class="tool-badge">Instagram Campaigns</span>
+                <span class="tool-badge">Facebook Ads</span>
+                <span class="tool-badge">UGC Strategy</span>
+                <span class="tool-badge">Meta Ads Manager</span>
+                <span class="tool-badge">Canva Visuals</span>
+            </div>
+        </div>
 
-    <!-- CTA -->
-    <div class="cta-section">
-        <h2>Interested in Working Together?</h2>
-        <p>Let’s create meaningful content that drives engagement and brand growth.</p>
-        <a href="/portfolio" class="back-btn">Back to Portfolio</a>
-    </div>
+        <div class="section">
+            <h2>Implementation Strategy</h2>
+            <ul class="implementation-list">
+                <li>Created campaign calendar aligned with peak engagement times</li>
+                <li>Designed Reels, carousels, and story visuals to drive engagement</li>
+                <li>Encouraged user-generated content via contests and hashtags</li>
+                <li>Monitored real-time ad performance and optimized targeting</li>
+                <li>Analyzed engagement metrics to inform next wave of creatives</li>
+            </ul>
+        </div>
 
+        <div class="section">
+            <h2>📸 Campaign Creative Snapshots</h2>
+            <div class="screenshot-placeholder">
+                <p><strong>Insert Reels / Carousel Mockups Here</strong></p>
+            </div>
+            <div class="screenshot-placeholder">
+                <p><strong>Insert Ad Visuals Here</strong></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Insights</h2>
+            <div class="implementation-list">
+                <li>Short-form content had highest reach and engagement</li>
+                <li>UGC campaigns increased brand credibility and shares</li>
+                <li>Story polls and quizzes increased interaction rate by X%</li>
+                <li>Carousel posts educated audience and improved product awareness</li>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Interested in Working Together?</h2>
+            <p style="max-width:700px; margin:0 auto; opacity:0.95;">
+                I bring hands-on experience in creating Gen Z-focused social campaigns. Let’s work together to boost your brand engagement and reach.
+            </p>
+            <div class="cta-buttons">
+                <a href="/portfolio" class="btn btn-primary">← Back to Portfolio</a>
+                <a href="/contact" class="btn btn-secondary">Get In Touch</a>
+                <a href="https://www.linkedin.com/in/nthabiseng-khumalo-9b174b1aa" target="_blank" class="btn btn-secondary">View LinkedIn</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
